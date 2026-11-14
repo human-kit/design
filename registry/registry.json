@@ -81,6 +81,11 @@
 			"title": "Radio Group",
 			"description": "One answer out of a few options, all of them in sight."
 		},
+		"search-field": {
+			"type": "registry:ui",
+			"title": "Search Field",
+			"description": "A box for a search query, with a magnifier, a cross that empties it and Escape that does the same."
+		},
 		"select": {
 			"type": "registry:ui",
 			"title": "Select",
