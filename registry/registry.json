@@ -11,6 +11,11 @@
 			"title": "Theme",
 			"description": "The design tokens, the light and dark themes, and the base styles."
 		},
+		"accordion": {
+			"type": "registry:ui",
+			"title": "Accordion",
+			"description": "Rows that each open on what they hold, ruled off from one another."
+		},
 		"badge": {
 			"type": "registry:ui",
 			"title": "Badge",

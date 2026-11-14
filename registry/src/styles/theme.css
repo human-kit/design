@@ -425,6 +425,12 @@
 	--shadow-focus:
 		0 0 0 1px var(--ring), 0 0 0 4px color-mix(in oklch, var(--ring) 18%, transparent);
 	/*
+	 * The same halo drawn inward, for a control that fills a box which clips it: an accordion's
+	 * row inside its card.
+	 */
+	--shadow-focus-inset:
+		inset 0 0 0 1px var(--ring), inset 0 0 0 4px color-mix(in oklch, var(--ring) 18%, transparent);
+	/*
 	 * The same halos for a field drawn as a line: the band under the line only, as wide as the
 	 * part of the halo a boxed field shows outside its ring.
 	 */

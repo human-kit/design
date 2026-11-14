@@ -30,6 +30,7 @@ const mergeConfig = {
 				'popover',
 				'dialog',
 				'focus',
+				'focus-inset',
 				'invalid',
 				'invalid-focus',
 				'focus-line',
