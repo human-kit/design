@@ -76,6 +76,11 @@
 			"title": "Number Field",
 			"description": "A number typed in a box, or stepped with a minus, a plus and the arrow keys."
 		},
+		"pin-input": {
+			"type": "registry:ui",
+			"title": "Pin Input",
+			"description": "One box per character, for a PIN or the code a message brings."
+		},
 		"popover": {
 			"type": "registry:ui",
 			"title": "Popover",
