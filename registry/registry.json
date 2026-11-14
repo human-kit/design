@@ -86,6 +86,16 @@
 			"title": "Textarea",
 			"description": "A field for a few lines of text, growing with what is typed."
 		},
+		"toggle": {
+			"type": "registry:ui",
+			"title": "Toggle",
+			"description": "A button that stays in when pressed, and out when pressed again."
+		},
+		"toggle-group": {
+			"type": "registry:ui",
+			"title": "Toggle Group",
+			"description": "Toggles side by side, one of them in or several, reached by the arrow keys."
+		},
 		"tooltip": {
 			"type": "registry:ui",
 			"title": "Tooltip",
