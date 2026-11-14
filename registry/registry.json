@@ -46,6 +46,11 @@
 			"title": "Checkbox Group",
 			"description": "Several checkboxes answering one question, with its label, its hint and its error."
 		},
+		"collapsible": {
+			"type": "registry:ui",
+			"title": "Collapsible",
+			"description": "A button that shows and hides what follows it, the panel opening on its own height."
+		},
 		"dialog": {
 			"type": "registry:ui",
 			"title": "Dialog",
