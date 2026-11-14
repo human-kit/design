@@ -45,6 +45,11 @@
 			"type": "registry:ui",
 			"title": "Select",
 			"description": "A form field with one or more values from a list of options."
+		},
+		"switch": {
+			"type": "registry:ui",
+			"title": "Switch",
+			"description": "An on and off setting that takes effect at once, with its label."
 		}
 	}
 }
