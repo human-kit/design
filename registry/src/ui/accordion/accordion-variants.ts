@@ -13,7 +13,7 @@ export const accordionVariants = tv({
 		// The row lights under the pointer as a menu's row does. Its halo is drawn inward: the
 		// card clips what a row draws outside it.
 		trigger: [
-			'group/accordion-trigger flex w-full cursor-pointer items-center justify-between gap-3 px-4 py-3 text-left',
+			'group/accordion-trigger flex h-8 w-full cursor-pointer items-center justify-between gap-3 px-3 text-left',
 			'text-body font-medium text-ink outline-hidden transition-[background-color,box-shadow] duration-150',
 			'data-hovered:bg-hover data-focus-visible:shadow-focus-inset',
 			'data-disabled:cursor-not-allowed data-disabled:opacity-45'
@@ -29,17 +29,17 @@ export const accordionVariants = tv({
 			'data-starting-style:h-0 data-starting-style:opacity-0 data-ending-style:h-0 data-ending-style:opacity-0',
 			'motion-reduce:transition-none'
 		],
-		content: 'px-4 pb-3 text-body text-ink-muted'
+		content: 'px-3 pt-0.5 pb-2.5 text-body text-ink-muted'
 	},
 	variants: {
 		variant: {
 			card: { root: 'overflow-hidden rounded-card bg-surface shadow-card' },
 			// The rules only. Each row lights within them, rounded as a menu's row, its text and its
-			// chevron 8px in, and 4px clear of the rules above and below; with no card to clip it, the
+			// chevron 8px in, and 2px clear of the rules above and below; with no card to clip it, the
 			// halo goes back outside. The panel's text starts where the row's does.
 			flush: {
-				header: 'py-1',
-				trigger: 'rounded-control px-2 py-2 data-focus-visible:shadow-focus',
+				header: 'py-0.5',
+				trigger: 'h-7 rounded-control px-2 data-focus-visible:shadow-focus',
 				content: 'px-2'
 			}
 		}
