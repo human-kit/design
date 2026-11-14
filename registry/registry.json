@@ -60,6 +60,11 @@
 			"type": "registry:ui",
 			"title": "Textarea",
 			"description": "A field for a few lines of text, growing with what is typed."
+		},
+		"tooltip": {
+			"type": "registry:ui",
+			"title": "Tooltip",
+			"description": "A short line that describes a control, under the pointer or the keyboard focus."
 		}
 	}
 }

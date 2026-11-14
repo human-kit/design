@@ -163,6 +163,7 @@
 		icon: Icon,
 		count,
 		children,
+		element = $bindable(null),
 		...restProps
 	}: Props = $props();
 </script>
@@ -177,6 +178,7 @@
 		class: className
 	})}
 	{pending}
+	bind:element
 	{...restProps}
 >
 	{#if children || Icon}

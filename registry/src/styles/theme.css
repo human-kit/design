@@ -411,6 +411,8 @@
 	/* Its thumb: a soft fall and a contact shadow, and a hairline to hold on white. */
 	--shadow-switch-thumb:
 		0 2px 6px oklch(0 0 0 / 0.15), 0 2px 1px oklch(0 0 0 / 0.06), 0 0 0 0.5px oklch(0 0 0 / 0.04);
+	/* A tooltip: a light along its top and a soft fall. */
+	--shadow-tooltip: inset 0 1px 0 oklch(1 0 0 / 0.14), 0 4px 10px -2px oklch(0 0 0 / 0.18);
 	--shadow-card: 0 0 0 1px var(--edge), 0 2px 6px -2px var(--fall-strong);
 	--shadow-popover: 0 0 0 1px var(--edge), 0 12px 32px -8px var(--fall-strong);
 	--shadow-dialog: 0 0 0 1px var(--edge), 0 24px 64px -16px var(--fall-strong);

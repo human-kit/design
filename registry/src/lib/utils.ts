@@ -24,6 +24,7 @@ const mergeConfig = {
 				'switch-rail',
 				'switch-on',
 				'switch-thumb',
+				'tooltip',
 				'card',
 				'popover',
 				'dialog',

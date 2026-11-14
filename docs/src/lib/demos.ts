@@ -20,6 +20,7 @@ const DEMO_ORDER = [
 	'tones',
 	'sizes',
 	'horizontal',
+	'shortcut',
 	'icon',
 	'indeterminate',
 	'invalid',
