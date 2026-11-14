@@ -61,6 +61,11 @@
 			"title": "Menu",
 			"description": "A list of actions that opens from a button or a right click."
 		},
+		"number-field": {
+			"type": "registry:ui",
+			"title": "Number Field",
+			"description": "A number typed in a box, or stepped with a minus, a plus and the arrow keys."
+		},
 		"popover": {
 			"type": "registry:ui",
 			"title": "Popover",
