@@ -41,6 +41,11 @@
 			"title": "Input",
 			"description": "A text field, in a box, in place or over a line."
 		},
+		"menu": {
+			"type": "registry:ui",
+			"title": "Menu",
+			"description": "A list of actions that opens from a button or a right click."
+		},
 		"radio-group": {
 			"type": "registry:ui",
 			"title": "Radio Group",

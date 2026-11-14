@@ -21,6 +21,7 @@ const DEMO_ORDER = [
 	'sizes',
 	'horizontal',
 	'shortcut',
+	'groups',
 	'icon',
 	'indeterminate',
 	'invalid',
