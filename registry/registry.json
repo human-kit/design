@@ -55,6 +55,11 @@
 			"type": "registry:ui",
 			"title": "Switch",
 			"description": "An on and off setting that takes effect at once, with its label."
+		},
+		"textarea": {
+			"type": "registry:ui",
+			"title": "Textarea",
+			"description": "A field for a few lines of text, growing with what is typed."
 		}
 	}
 }
