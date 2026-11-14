@@ -34,7 +34,7 @@
 	 *   line           0.87     0.42     the border of a soft fill
 	 *   ink            0.50     0.80     coloured text, on the canvas or on its soft fill
 	 *   solid          0.66     0.66     a dot, a bar, a meter (amber 0.80: yellow has no dark form)
-	 *   fill           0.55     0.50     the primary button; hover is 0.05 darker in light, lighter in dark
+	 *   fill           0.55     0.50     the primary and the danger buttons; hover is 0.05 darker in light, lighter in dark
 	 *
 	 * The primary is one more hue on this scale, with the extra `fill` role. Change its hue and
 	 * chroma, and every role follows.
@@ -44,6 +44,9 @@
 	--canvas: oklch(0.985 0 0);
 	--surface: oklch(0.985 0 0);
 	--surface-muted: oklch(0.975 0 0);
+	/* A control's box under the pointer and while pressed. In light, its shadow says it. */
+	--surface-hover: oklch(0.985 0 0);
+	--surface-pressed: oklch(0.985 0 0);
 	--overlay: oklch(0.985 0 0);
 	--hover: oklch(0.955 0 0);
 
@@ -65,12 +68,21 @@
 	--primary-ink: oklch(0.5 0.2 277);
 	--on-primary: oklch(0.99 0 0);
 
+	/* The danger fill: the filled button of a destructive action, on the fill steps of the scale. */
+	--danger: oklch(0.55 0.2 22);
+	--danger-hover: oklch(0.5 0.2 22);
+	--danger-edge: oklch(0.45 0.19 22);
+	--on-danger: oklch(0.99 0 0);
+
 	/* The 1px ring that draws a control, at rest and under the pointer. */
 	--edge: oklch(0 0 0 / 0.1);
 	--edge-strong: oklch(0 0 0 / 0.14);
 	/* The soft fall under what stands off the page. */
 	--fall: oklch(0 0 0 / 0.08);
 	--fall-strong: oklch(0 0 0 / 0.14);
+	/* A light along the top edge of a control. Light needs none: the fall below does the work. */
+	--highlight: transparent;
+	--highlight-strong: transparent;
 
 	--tone-gray-soft: oklch(0.97 0 0);
 	--tone-gray-line: oklch(0.87 0 0);
@@ -130,6 +142,9 @@
 	--canvas: oklch(0.17 0 0);
 	--surface: oklch(0.2 0 0);
 	--surface-muted: oklch(0.185 0 0);
+	/* A shadow does not show on a dark page, thus the box itself rises and sinks. */
+	--surface-hover: oklch(0.235 0 0);
+	--surface-pressed: oklch(0.18 0 0);
 	--overlay: oklch(0.23 0 0);
 	--hover: oklch(0.25 0 0);
 
@@ -149,10 +164,17 @@
 	--primary-ink: oklch(0.8 0.12 277);
 	--on-primary: oklch(0.99 0 0);
 
+	--danger: oklch(0.5 0.15 22);
+	--danger-hover: oklch(0.55 0.15 22);
+	--danger-edge: oklch(0.42 0.13 22);
+	--on-danger: oklch(0.99 0 0);
+
 	--edge: oklch(1 0 0 / 0.1);
 	--edge-strong: oklch(1 0 0 / 0.16);
 	--fall: oklch(0 0 0 / 0.3);
 	--fall-strong: oklch(0 0 0 / 0.45);
+	--highlight: oklch(1 0 0 / 0.07);
+	--highlight-strong: oklch(1 0 0 / 0.12);
 
 	--tone-gray-soft: oklch(0.27 0 0);
 	--tone-gray-line: oklch(0.42 0 0);
@@ -262,6 +284,8 @@
 	--color-canvas: var(--canvas);
 	--color-surface: var(--surface);
 	--color-surface-muted: var(--surface-muted);
+	--color-surface-hover: var(--surface-hover);
+	--color-surface-pressed: var(--surface-pressed);
 	--color-overlay: var(--overlay);
 	--color-hover: var(--hover);
 	--color-selected: var(--selected);
@@ -279,6 +303,10 @@
 	--color-primary-edge: var(--primary-edge);
 	--color-ring: var(--ring);
 
+	--color-danger: var(--danger);
+	--color-danger-hover: var(--danger-hover);
+	--color-danger-edge: var(--danger-edge);
+	--color-on-danger: var(--on-danger);
 	--color-danger-soft: var(--danger-soft);
 	--color-danger-line: var(--danger-line);
 	--color-danger-ink: var(--danger-ink);
@@ -347,11 +375,15 @@
 	 * while pressed. Pressed keeps the layers of the lift, only clear: a shadow eased into `none`
 	 * shrinks its blur on the way, and for a few frames it draws a second edge half a pixel off.
 	 */
-	--shadow-control: 0 0 0 1px var(--edge), 0 1px 2px var(--fall), 0 2px 5px -2px var(--fall);
+	--shadow-control:
+		inset 0 1px 0 var(--highlight), 0 0 0 1px var(--edge), 0 1px 2px var(--fall),
+		0 2px 5px -2px var(--fall);
 	--shadow-control-hover:
-		0 0 0 1px var(--edge-strong), 0 1px 2px var(--fall), 0 3px 8px -2px var(--fall-strong);
+		inset 0 1px 0 var(--highlight-strong), 0 0 0 1px var(--edge-strong), 0 1px 2px var(--fall),
+		0 3px 8px -2px var(--fall-strong);
 	--shadow-control-pressed:
-		0 0 0 1px var(--edge-strong), 0 1px 2px transparent, 0 2px 5px -2px transparent;
+		inset 0 1px 0 transparent, 0 0 0 1px var(--edge-strong), 0 1px 2px transparent,
+		0 2px 5px -2px transparent;
 	/* The primary action: a darker edge, a light along its top, and a fall in its own colour. */
 	--shadow-primary:
 		0 0 0 1px var(--primary-edge), inset 0 1px 0 oklch(1 0 0 / 0.22),

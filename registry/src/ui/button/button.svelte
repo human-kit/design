@@ -1,14 +1,22 @@
 <script lang="ts" module>
 	import { tv, type VariantProps } from '@registry/lib/utils';
 
-	/** A control with a box stands off the page and sinks while it is pressed. */
-	const lifted =
-		'shadow-control data-hovered:not-data-pressed:shadow-control-hover data-pressed:shadow-control-pressed';
+	/**
+	 * A control with a box stands off the page and sinks while it is pressed. In light the shadow
+	 * says so; in dark, where a shadow does not show, the box gets lighter and darker.
+	 */
+	const lifted = [
+		'bg-surface shadow-control',
+		'data-hovered:not-data-pressed:bg-surface-hover data-hovered:not-data-pressed:shadow-control-hover',
+		'data-pressed:bg-surface-pressed data-pressed:shadow-control-pressed'
+	].join(' ');
 
 	export const buttonVariants = tv({
 		base: [
 			'relative inline-flex max-w-full min-w-0 shrink-0 cursor-pointer items-center justify-center gap-1.5 rounded-control font-medium whitespace-nowrap select-none',
-			'transition-[opacity,box-shadow,color,background-color] duration-150 ease-out outline-hidden',
+			'transition-[opacity,box-shadow,color,background-color,scale] duration-150 ease-out outline-hidden',
+			// A press answers at once: the button gives a little under the pointer.
+			'data-pressed:scale-[0.97] motion-reduce:data-pressed:scale-100',
 			// The ring follows `data-focus-visible`, not `:focus-visible`: the primitive also
 			// shows it when the focus comes back from an overlay after a key press.
 			'data-focus-visible:shadow-focus',
@@ -17,22 +25,29 @@
 			'[&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0'
 		],
 		variants: {
+			/** The shape: how much the button stands out. */
 			variant: {
 				// The one action the screen is for.
 				default:
 					'bg-primary text-on-primary shadow-primary data-hovered:bg-primary-hover data-pressed:shadow-primary-pressed',
 				// Every other action of a toolbar or a form.
-				outline: `bg-surface text-ink-muted data-hovered:text-ink ${lifted}`,
+				outline: `text-ink-muted data-hovered:text-ink ${lifted}`,
 				// Icons and actions that repeat down a list: no box until the pointer is on it.
 				ghost: 'text-ink-muted data-hovered:bg-hover data-hovered:text-ink data-pressed:bg-hover',
-				// A faint fill and no edge: a control that is always there but rarely the point.
-				soft: 'bg-ink/4 text-ink-muted data-hovered:bg-ink/7 data-hovered:text-ink data-pressed:bg-ink/7',
-				// `ghost` for the action that destroys what it sits in.
-				danger: 'text-danger-ink data-hovered:bg-danger-soft data-pressed:bg-danger-soft',
-				// `outline` for the step that closes a record for good: the box of its neighbours, red
-				// only in its words, so it does not shout louder than going ahead.
-				'outline-danger': `bg-surface text-danger-ink data-hovered:bg-danger-soft ${lifted}`,
 				link: 'text-ink underline-offset-4 data-hovered:underline data-focus-visible:underline'
+			},
+			/**
+			 * The colour: what the action means. Any shape takes any intent.
+			 *
+			 * `danger` points the primary and the ring at the danger tokens for this button only, so
+			 * the filled shape and the focus ring follow with no rule of their own. The other shapes
+			 * keep their neutral fills: only the words turn red. A washed red behind them reads as a
+			 * stain, not as a warning.
+			 */
+			intent: {
+				neutral: '',
+				danger:
+					'[--on-primary:var(--on-danger)] [--primary-edge:var(--danger-edge)] [--primary-hover:var(--danger-hover)] [--primary:var(--danger)] [--ring:var(--danger-ink)]'
 			},
 			size: {
 				default: 'h-6.5 px-2 text-small',
@@ -51,11 +66,23 @@
 		},
 		compoundVariants: [
 			// A link has no box of its own, thus no size applies to it. It is laid out as text, so
-			// its underline reaches what is inside it.
+			// its underline reaches what is inside it. It does not give under a press, and its focus
+			// ring keeps 2px of air: a ring tight on the letters cramps them.
 			{
 				variant: 'link',
-				class:
-					'inline-block h-auto w-fit justify-start p-0 text-body shadow-none [&_svg]:inline-block [&_svg]:size-3.5 [&_svg]:align-[-0.15em]'
+				class: [
+					'inline-block h-auto w-fit justify-start p-0 text-body shadow-none data-pressed:scale-100',
+					// The focus ring is the same as on every other button, drawn by a pseudo-element a
+					// little larger than the text: it gets room around the letters and takes none from
+					// the layout. Padding offset by a negative margin broke in a shrink-to-fit container.
+					'data-focus-visible:shadow-none after:pointer-events-none after:absolute after:-inset-x-1 after:-inset-y-0.5 after:rounded-md data-focus-visible:after:shadow-focus',
+					'[&_svg]:inline-block [&_svg]:size-3.5 [&_svg]:align-[-0.15em]'
+				]
+			},
+			{
+				variant: ['outline', 'ghost', 'link'],
+				intent: 'danger',
+				class: 'text-danger-ink data-hovered:text-danger-ink'
 			},
 			// The icon's box carries a margin around its glyph. With the same padding on both sides,
 			// a label led by an icon stands further from its left edge than from its right one.
@@ -72,13 +99,14 @@
 		],
 		defaultVariants: {
 			variant: 'default',
+			intent: 'neutral',
 			size: 'default',
 			iconed: false,
 			counted: false
 		}
 	});
 
-	/** The count that ends a button: quieter than the label, in the ink of the variant. */
+	/** The count that ends a button: quieter than the label, in the ink of the button. */
 	export const buttonCountVariants = tv({
 		base: 'tabular-nums',
 		variants: {
@@ -86,16 +114,22 @@
 				default: 'text-on-primary/70',
 				outline: 'text-ink-subtle',
 				ghost: 'text-ink-subtle',
-				soft: 'text-ink-subtle',
-				danger: 'text-danger-ink/70',
-				'outline-danger': 'text-danger-ink/70',
 				link: 'text-ink-subtle'
-			}
+			},
+			intent: { neutral: '', danger: '' }
 		},
-		defaultVariants: { variant: 'default' }
+		compoundVariants: [
+			{
+				variant: ['outline', 'ghost', 'link'],
+				intent: 'danger',
+				class: 'text-danger-ink/70'
+			}
+		],
+		defaultVariants: { variant: 'default', intent: 'neutral' }
 	});
 
 	export type ButtonVariant = NonNullable<VariantProps<typeof buttonVariants>['variant']>;
+	export type ButtonIntent = NonNullable<VariantProps<typeof buttonVariants>['intent']>;
 	export type ButtonSize = NonNullable<VariantProps<typeof buttonVariants>['size']>;
 </script>
 
@@ -107,6 +141,8 @@
 	type Props = Omit<ComponentProps<typeof ButtonPrimitive.Root>, 'children'> & {
 		children?: Snippet;
 		variant?: ButtonVariant;
+		/** `danger` for an action that destroys or cannot be undone. */
+		intent?: ButtonIntent;
 		size?: ButtonSize;
 		/**
 		 * The icon that leads the label. Give it here, not first in `children`: a label led by an
@@ -120,6 +156,7 @@
 
 	let {
 		variant = 'default',
+		intent = 'neutral',
 		size = 'default',
 		class: className,
 		pending = false,
@@ -133,6 +170,7 @@
 <ButtonPrimitive.Root
 	class={buttonVariants({
 		variant,
+		intent,
 		size,
 		iconed: Icon !== undefined,
 		counted: count !== undefined,
@@ -153,7 +191,7 @@
 			{/if}
 			{@render children?.()}
 			{#if count !== undefined}
-				<span class={buttonCountVariants({ variant })}>{count}</span>
+				<span class={buttonCountVariants({ variant, intent })}>{count}</span>
 			{/if}
 		</span>
 	{/if}

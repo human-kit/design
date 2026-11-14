@@ -34,6 +34,9 @@ const PAIRS: Pair[] = [
 	{ fg: 'on-primary', bg: 'primary', min: TEXT },
 	{ fg: 'on-primary', bg: 'primary-hover', min: TEXT },
 	{ fg: 'primary-ink', bg: 'primary-soft', min: TEXT },
+	{ fg: 'on-danger', bg: 'danger', min: TEXT },
+	{ fg: 'on-danger', bg: 'danger-hover', min: TEXT },
+	{ fg: 'danger-ink', bg: 'hover', min: TEXT },
 	// Placeholders and icons that only decorate: held to the non-text bar.
 	{ fg: 'ink-subtle', bg: 'canvas', min: NON_TEXT },
 	...TONES.flatMap((tone) => [
