@@ -1,0 +1,22 @@
+node_modules
+.svelte-kit
+dist
+build
+.env
+.env.*
+!.env.example
+.vercel
+
+# Generated from registry/ by `pnpm run registry:build`
+docs/static/r
+
+# This repo uses pnpm
+package-lock.json
+yarn.lock
+bun.lock
+bun.lockb
+
+.playwright-mcp/
+
+# Local agent notes
+.claude/

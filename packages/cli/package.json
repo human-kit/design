@@ -1,0 +1,46 @@
+{
+	"name": "@human-kit/design",
+	"version": "0.0.0",
+	"description": "Copies styled, accessible Svelte 5 components into your project. The components are built on @human-kit/ui.",
+	"license": "MIT",
+	"author": "Agustin Delgado <agustindariodelgado@gmail.com>",
+	"homepage": "https://design.human-kit.com",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/human-kit/design.git",
+		"directory": "packages/cli"
+	},
+	"keywords": [
+		"svelte",
+		"svelte5",
+		"components",
+		"design-system",
+		"tailwind",
+		"accessible",
+		"cli",
+		"human-kit"
+	],
+	"type": "module",
+	"engines": {
+		"node": ">=20"
+	},
+	"bin": {
+		"human-kit-design": "./dist/bin.js"
+	},
+	"files": [
+		"dist"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
+	"scripts": {
+		"build": "tsc -p tsconfig.build.json",
+		"check": "tsc -p tsconfig.json",
+		"test": "vitest run"
+	},
+	"devDependencies": {
+		"@types/node": "^22.18.0",
+		"typescript": "^5.9.3",
+		"vitest": "^4.0.16"
+	}
+}

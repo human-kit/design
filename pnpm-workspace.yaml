@@ -1,0 +1,8 @@
+packages:
+  - 'registry'
+  - 'packages/*'
+  - 'docs'
+allowBuilds:
+  esbuild: true
+minimumReleaseAgeExclude:
+  - '@human-kit/*'

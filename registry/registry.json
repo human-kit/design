@@ -1,0 +1,30 @@
+{
+	"$comment": "Metadata for each item. The build finds the files and the dependencies from the imports.",
+	"items": {
+		"utils": {
+			"type": "registry:lib",
+			"title": "Utils",
+			"description": "The cn() helper that merges Tailwind class names."
+		},
+		"theme": {
+			"type": "registry:style",
+			"title": "Theme",
+			"description": "The design tokens, the light and dark themes, and the base styles."
+		},
+		"button": {
+			"type": "registry:ui",
+			"title": "Button",
+			"description": "A button with variants, sizes and a pending state."
+		},
+		"dialog": {
+			"type": "registry:ui",
+			"title": "Dialog",
+			"description": "A modal window over the page, with a title, a description and actions."
+		},
+		"select": {
+			"type": "registry:ui",
+			"title": "Select",
+			"description": "A form field with one or more values from a list of options."
+		}
+	}
+}

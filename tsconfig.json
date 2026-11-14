@@ -1,0 +1,16 @@
+{
+	"compilerOptions": {
+		"allowImportingTsExtensions": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"strict": true,
+		"module": "esnext",
+		"moduleResolution": "bundler",
+		"target": "esnext",
+		"noEmit": true,
+		"types": ["node"]
+	},
+	"include": ["registry/scripts/**/*.ts"]
+}

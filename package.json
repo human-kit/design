@@ -1,0 +1,35 @@
+{
+	"name": "@human-kit/design-monorepo",
+	"private": true,
+	"type": "module",
+	"packageManager": "pnpm@11.5.2",
+	"engines": {
+		"node": ">=22.18",
+		"pnpm": ">=9"
+	},
+	"scripts": {
+		"dev": "pnpm run registry:build && pnpm --filter docs dev",
+		"build": "pnpm run registry:build && pnpm --filter @human-kit/design build && pnpm --filter docs build",
+		"registry:build": "node registry/scripts/build.ts",
+		"contrast": "node registry/scripts/check-contrast.ts",
+		"test": "pnpm --filter @human-kit/design test",
+		"check": "pnpm -r run check",
+		"format": "prettier --write .",
+		"lint": "prettier --check . && eslint .",
+		"changeset": "changeset"
+	},
+	"devDependencies": {
+		"@changesets/cli": "^2.29.8",
+		"@eslint/js": "^9.38.0",
+		"@types/node": "^22.18.0",
+		"eslint": "^9.38.0",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-svelte": "^3.12.4",
+		"globals": "^16.4.0",
+		"prettier": "^3.6.2",
+		"prettier-plugin-svelte": "^3.4.0",
+		"prettier-plugin-tailwindcss": "^0.7.1",
+		"typescript": "^5.9.3",
+		"typescript-eslint": "^8.46.1"
+	}
+}

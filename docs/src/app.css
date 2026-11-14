@@ -1,0 +1,5 @@
+@import 'tailwindcss';
+@import '../../registry/src/styles/theme.css';
+
+/* The registry components live outside this package. Tailwind scans them for class names. */
+@source '../../registry/src';
