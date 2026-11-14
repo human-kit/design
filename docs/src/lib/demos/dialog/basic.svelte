@@ -14,7 +14,7 @@
 		</Dialog.Header>
 		<Dialog.Footer>
 			<Dialog.Close class={buttonVariants({ variant: 'outline' })}>Cancel</Dialog.Close>
-			<Dialog.Close class={buttonVariants({ variant: 'destructive' })}>Delete</Dialog.Close>
+			<Dialog.Close class={buttonVariants({ variant: 'outline-danger' })}>Delete</Dialog.Close>
 		</Dialog.Footer>
 	</Dialog.Content>
 </Dialog.Root>

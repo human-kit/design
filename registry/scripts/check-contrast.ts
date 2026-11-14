@@ -2,7 +2,7 @@
  * Checks the color pairs of the theme against WCAG 2.2, in the light and the dark theme.
  *
  *   - 4.5:1 for text on its surface (1.4.3).
- *   - 3:1 for the focus ring and the edge of a form field on their surface (1.4.11).
+ *   - 3:1 for the focus ring on a surface, and for decorative ink (1.4.11).
  *
  * The tokens must be plain `oklch(L C H)` values. Exits with 1 when a pair fails.
  */
@@ -15,20 +15,31 @@ type Pair = { fg: string; bg: string; min: number };
 const TEXT = 4.5;
 const NON_TEXT = 3;
 
+const SURFACES = ['canvas', 'surface', 'overlay'];
+const TONES = ['gray', 'blue', 'cyan', 'teal', 'green', 'amber', 'orange', 'red', 'pink', 'violet'];
+
 const PAIRS: Pair[] = [
-	{ fg: 'foreground', bg: 'background', min: TEXT },
-	{ fg: 'muted-foreground', bg: 'background', min: TEXT },
-	{ fg: 'muted-foreground', bg: 'muted', min: TEXT },
-	{ fg: 'muted-foreground', bg: 'popover', min: TEXT },
-	{ fg: 'popover-foreground', bg: 'popover', min: TEXT },
-	{ fg: 'primary-foreground', bg: 'primary', min: TEXT },
-	{ fg: 'secondary-foreground', bg: 'secondary', min: TEXT },
-	{ fg: 'accent-foreground', bg: 'accent', min: TEXT },
-	{ fg: 'destructive-foreground', bg: 'destructive', min: TEXT },
-	{ fg: 'ring', bg: 'background', min: NON_TEXT },
-	{ fg: 'ring', bg: 'popover', min: NON_TEXT },
-	{ fg: 'input', bg: 'background', min: NON_TEXT },
-	{ fg: 'input', bg: 'popover', min: NON_TEXT }
+	...SURFACES.flatMap((bg) => [
+		{ fg: 'ink', bg, min: TEXT },
+		{ fg: 'ink-muted', bg, min: TEXT },
+		{ fg: 'primary-ink', bg, min: TEXT },
+		{ fg: 'danger-ink', bg, min: TEXT },
+		// The focus ring identifies the focused control (1.4.11).
+		{ fg: 'ring', bg, min: NON_TEXT }
+	]),
+	{ fg: 'ink', bg: 'hover', min: TEXT },
+	{ fg: 'ink-muted', bg: 'hover', min: TEXT },
+	{ fg: 'ink', bg: 'selected', min: TEXT },
+	{ fg: 'ink-muted', bg: 'surface-muted', min: TEXT },
+	{ fg: 'on-primary', bg: 'primary', min: TEXT },
+	{ fg: 'on-primary', bg: 'primary-hover', min: TEXT },
+	{ fg: 'primary-ink', bg: 'primary-soft', min: TEXT },
+	// Placeholders and icons that only decorate: held to the non-text bar.
+	{ fg: 'ink-subtle', bg: 'canvas', min: NON_TEXT },
+	...TONES.flatMap((tone) => [
+		{ fg: `tone-${tone}-ink`, bg: `tone-${tone}-soft`, min: TEXT },
+		{ fg: `tone-${tone}-ink`, bg: 'canvas', min: TEXT }
+	])
 ];
 
 /** OKLCH to linear sRGB, then the WCAG relative luminance. */
@@ -55,9 +66,9 @@ function contrast(a: number, b: number) {
 }
 
 function parseBlock(css: string, selector: string) {
-	const start = css.indexOf(`${selector} {`);
+	const start = css.indexOf(`\n${selector} {`);
 	if (start === -1) throw new Error(`theme.css has no "${selector}" block.`);
-	const body = css.slice(start, css.indexOf('}', start));
+	const body = css.slice(start, css.indexOf('\n}', start));
 	const tokens = new Map<string, number>();
 	for (const [, name, l, c, h] of body.matchAll(
 		/--([a-z-]+):\s*oklch\(([\d.]+)\s+([\d.]+)\s+([\d.]+)\)/g
@@ -65,6 +76,16 @@ function parseBlock(css: string, selector: string) {
 		tokens.set(name, luminance(Number(l), Number(c), Number(h)));
 	}
 	return tokens;
+}
+
+/** The aliases, such as `--danger-ink: var(--tone-red-ink)`, from the block both themes share. */
+function parseAliases(css: string) {
+	const start = css.indexOf('\n:root,\n.dark {');
+	const body = start === -1 ? '' : css.slice(start, css.indexOf('\n}', start));
+	return [...body.matchAll(/--([a-z-]+):\s*var\(--([a-z-]+)\)/g)].map(([, name, target]) => [
+		name,
+		target
+	]);
 }
 
 const themePath = join(dirname(fileURLToPath(import.meta.url)), '..', 'src', 'styles', 'theme.css');
@@ -76,6 +97,10 @@ for (const [mode, selector] of [
 	['dark', '.dark']
 ] as const) {
 	const tokens = parseBlock(css, selector);
+	for (const [name, target] of parseAliases(css)) {
+		const value = tokens.get(target);
+		if (value !== undefined) tokens.set(name, value);
+	}
 	console.log(`\n${mode}`);
 	for (const { fg, bg, min } of PAIRS) {
 		const a = tokens.get(fg);

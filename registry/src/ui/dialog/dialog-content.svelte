@@ -26,7 +26,7 @@
 	/>
 	<DialogPrimitive.Content
 		class={cn(
-			'bg-popover text-popover-foreground relative grid w-full max-w-[calc(100%-2rem)] gap-4 rounded-lg border p-6 shadow-lg outline-hidden duration-150 sm:max-w-lg',
+			'bg-overlay text-ink relative grid w-full max-w-[calc(100%-2rem)] gap-4 rounded-lg border p-6 shadow-lg outline-hidden duration-150 sm:max-w-lg',
 			'data-entering:animate-in data-entering:fade-in-0 data-entering:zoom-in-95 data-exiting:animate-out data-exiting:fade-out-0 data-exiting:zoom-out-95',
 			className
 		)}
@@ -35,7 +35,7 @@
 		{@render children?.()}
 		{#if showCloseButton}
 			<DialogPrimitive.Close
-				class="text-muted-foreground data-focus-visible:outline-ring data-hovered:bg-accent data-hovered:text-accent-foreground absolute top-4 right-4 inline-flex size-6 items-center justify-center rounded-sm outline-hidden transition-colors data-focus-visible:outline-2 data-focus-visible:outline-offset-2 data-focus-visible:outline-solid [&_svg]:size-4"
+				class="text-ink-muted data-focus-visible:outline-ring data-hovered:bg-hover data-hovered:text-ink absolute top-4 right-4 inline-flex size-6 items-center justify-center rounded-sm outline-hidden transition-colors data-focus-visible:outline-2 data-focus-visible:outline-offset-2 data-focus-visible:outline-solid [&_svg]:size-4"
 			>
 				<XIcon aria-hidden="true" />
 				<span class="sr-only">{closeLabel}</span>

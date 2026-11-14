@@ -11,7 +11,7 @@
 	</div>
 	<details class="group">
 		<summary
-			class="text-muted-foreground outline-ring cursor-pointer rounded-sm text-sm select-none focus-visible:outline-2 focus-visible:outline-offset-2"
+			class="text-ink-muted outline-ring cursor-pointer rounded-sm text-sm select-none focus-visible:outline-2 focus-visible:outline-offset-2"
 		>
 			Show the code
 		</summary>

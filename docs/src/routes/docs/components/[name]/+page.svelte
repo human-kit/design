@@ -16,7 +16,7 @@
 <article class="flex max-w-3xl flex-col gap-8">
 	<header class="flex flex-col gap-2">
 		<h1 class="text-3xl font-semibold tracking-tight">{data.entry.title}</h1>
-		<p class="text-muted-foreground">{data.entry.description}</p>
+		<p class="text-ink-muted">{data.entry.description}</p>
 	</header>
 
 	{#if data.demos[0]}
@@ -26,7 +26,7 @@
 	<section class="flex flex-col gap-3">
 		<h2 class="text-xl font-semibold tracking-tight">Installation</h2>
 		<CodeBlock code={`${CLI} add ${data.entry.name}`} label="Install command" />
-		<p class="text-muted-foreground text-sm">
+		<p class="text-ink-muted text-sm">
 			The command copies the files to <code>src/lib/components/ui/{data.entry.name}</code>. It also
 			installs the packages that the files import.
 		</p>

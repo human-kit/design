@@ -13,7 +13,7 @@
 
 <SelectPrimitive.Popover
 	class={cn(
-		'bg-popover text-popover-foreground w-(--trigger-width) min-w-32 overflow-hidden rounded-md border p-1 shadow-md duration-100',
+		'bg-overlay text-ink w-(--trigger-width) min-w-32 overflow-hidden rounded-md border p-1 shadow-md duration-100',
 		'data-entering:animate-in data-entering:fade-in-0 data-entering:zoom-in-95 data-exiting:animate-out data-exiting:fade-out-0 data-exiting:zoom-out-95',
 		className
 	)}

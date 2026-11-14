@@ -14,9 +14,9 @@
 
 <SelectPrimitive.Trigger
 	class={cn(
-		'border-input bg-background flex h-9 w-full items-center justify-between gap-2 rounded-md border px-3 text-sm whitespace-nowrap outline-hidden transition-colors',
+		'border-line-strong bg-canvas flex h-9 w-full items-center justify-between gap-2 rounded-md border px-3 text-sm whitespace-nowrap outline-hidden transition-colors',
 		'data-focus-visible:outline-ring data-focus-visible:outline-2 data-focus-visible:outline-offset-2 data-focus-visible:outline-solid',
-		'data-placeholder:text-muted-foreground data-invalid:border-destructive',
+		'data-placeholder:text-ink-muted data-invalid:border-danger-solid',
 		'data-disabled:cursor-not-allowed data-disabled:opacity-50',
 		'[&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
 		className
@@ -32,7 +32,7 @@
 		<ChevronDown
 			aria-hidden="true"
 			class={cn(
-				'text-muted-foreground transition-transform motion-reduce:transition-none',
+				'text-ink-muted transition-transform motion-reduce:transition-none',
 				open && 'rotate-180'
 			)}
 		/>

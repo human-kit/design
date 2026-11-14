@@ -15,10 +15,10 @@
 
 <section class="flex max-w-2xl flex-col gap-6">
 	<h1 class="text-4xl font-semibold tracking-tight">human-kit design</h1>
-	<p class="text-muted-foreground text-lg">
+	<p class="text-ink-muted text-lg">
 		Styled components for Svelte 5. You copy them into your project, and then the code is yours. The
 		behavior and the accessibility come from
-		<a class="text-foreground underline underline-offset-4" href="https://ui.human-kit.com"
+		<a class="text-ink underline underline-offset-4" href="https://ui.human-kit.com"
 			>@human-kit/ui</a
 		>. This kit adds the look: tokens, variants and Tailwind CSS classes.
 	</p>

@@ -13,7 +13,7 @@ const sources = import.meta.glob<string>('./demos/*/*.svelte', {
 });
 
 /** The demos of a component, in the order of the file names in `DEMO_ORDER`, then the rest. */
-const DEMO_ORDER = ['basic', 'variants', 'sizes', 'pending', 'placeholder'];
+const DEMO_ORDER = ['basic', 'variants', 'sizes', 'icon', 'pending', 'placeholder'];
 
 export function demosOf(component: string): Demo[] {
 	return Object.keys(components)

@@ -14,7 +14,7 @@
 <SelectPrimitive.Item
 	class={cn(
 		'relative flex w-full cursor-default items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden select-none',
-		'data-focused:bg-accent data-focused:text-accent-foreground',
+		'data-focused:bg-hover data-focused:text-ink',
 		'data-disabled:pointer-events-none data-disabled:opacity-50',
 		// The list moves the focus between options with the arrow keys, thus the highlight
 		// above is the keyboard focus. The ring marks it when it comes from the keyboard.

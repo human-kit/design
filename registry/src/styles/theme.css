@@ -1,14 +1,23 @@
 @import 'tw-animate-css';
+@import '@fontsource-variable/geist';
+@import '@fontsource-variable/geist-mono';
 
 /*
  * human-kit design theme (Tailwind CSS v4, CSS-first).
  *
- * The components read only the semantic tokens below, never a raw palette shade. Change a
- * token here and every component follows. Dark mode redefines the same tokens under `.dark`,
- * so a component never needs a `dark:` variant.
+ * Four decisions shape the whole file:
+ * - Neutral greys, no tint: the only colour on screen is the primary's and the tones'.
+ * - Tokens are named for what they are for (canvas, surface, ink, line), not for a shade.
+ * - A control is drawn by a 1px shadow ring, not a border: the ring does not change the box,
+ *   so a button, a pill and a field line up at the same height.
+ * - Colour means something. Tones are a closed set with the same four roles (soft fill, line,
+ *   ink, solid mark), and the states (danger, success, warning, info) are mapped onto them.
  *
- * `pnpm run contrast` checks the text and control pairs against WCAG 2.2: 4.5:1 for text,
- * 3:1 for focus rings and field borders. Run it after a change to a color.
+ * The components read only these tokens, never a palette shade. Dark mode redefines the same
+ * tokens under `.dark`, so a component never needs a `dark:` variant.
+ *
+ * `pnpm run contrast` checks the text and control pairs against WCAG 2.2. Run it after a change
+ * to a colour.
  */
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -16,96 +25,370 @@
 :root {
 	color-scheme: light;
 
-	--radius: 0.5rem;
+	/*
+	 * The scale. Every colour below sits on one of a few fixed lightness steps, so the parts of
+	 * the system line up with each other instead of each being picked by eye:
+	 *
+	 *   role           light    dark
+	 *   soft fill      0.97     0.27     a tag, a selected row, a quiet notice
+	 *   line           0.87     0.42     the border of a soft fill
+	 *   ink            0.50     0.80     coloured text, on the canvas or on its soft fill
+	 *   solid          0.66     0.66     a dot, a bar, a meter (amber 0.80: yellow has no dark form)
+	 *   fill           0.55     0.50     the primary button; hover is 0.05 darker in light, lighter in dark
+	 *
+	 * The primary is one more hue on this scale, with the extra `fill` role. Change its hue and
+	 * chroma, and every role follows.
+	 */
 
-	/* The page is a step off pure white. Popovers and dialogs sit on pure white above it. */
-	--background: oklch(0.99 0 0);
-	--foreground: oklch(0.205 0 0);
-	--popover: oklch(1 0 0);
-	--popover-foreground: oklch(0.205 0 0);
+	/* Surfaces. In light, they all sit at 0.985 and a shadow lifts what stands off the page. */
+	--canvas: oklch(0.985 0 0);
+	--surface: oklch(0.985 0 0);
+	--surface-muted: oklch(0.975 0 0);
+	--overlay: oklch(0.985 0 0);
+	--hover: oklch(0.955 0 0);
 
-	/* Neutral primary: a solid button is ink on paper, and it flips with the theme. */
-	--primary: oklch(0.205 0 0);
-	--primary-foreground: oklch(0.985 0 0);
-	--secondary: oklch(0.96 0 0);
-	--secondary-foreground: oklch(0.205 0 0);
-	--muted: oklch(0.96 0 0);
-	--muted-foreground: oklch(0.5 0 0);
-	--accent: oklch(0.95 0 0);
-	--accent-foreground: oklch(0.205 0 0);
-	--destructive: oklch(0.577 0.245 27.325);
-	--destructive-foreground: oklch(0.985 0 0);
+	/* Ink: the text, in three weights of emphasis. Subtle is for placeholders and decoration. */
+	--ink: oklch(0.205 0 0);
+	--ink-muted: oklch(0.52 0 0);
+	--ink-subtle: oklch(0.64 0 0);
 
-	/* Decoration only: dividers and the edge of a panel. */
-	--border: oklch(0.92 0 0);
-	/* The edge of a form field. It identifies the control, thus it needs 3:1. */
-	--input: oklch(0.6 0 0);
-	--ring: oklch(0.205 0 0);
+	/* Lines: dividers and the edge of a region. */
+	--line: oklch(0.93 0 0);
+	--line-strong: oklch(0.88 0 0);
+
+	--primary: oklch(0.55 0.2 277);
+	--primary-hover: oklch(0.5 0.2 277);
+	/* The 1px edge of a primary button: a step under its hover. */
+	--primary-edge: oklch(0.45 0.2 277);
+	--primary-soft: oklch(0.97 0.025 277);
+	--primary-line: oklch(0.87 0.07 277);
+	--primary-ink: oklch(0.5 0.2 277);
+	--on-primary: oklch(0.99 0 0);
+
+	/* The 1px ring that draws a control, at rest and under the pointer. */
+	--edge: oklch(0 0 0 / 0.1);
+	--edge-strong: oklch(0 0 0 / 0.14);
+	/* The soft fall under what stands off the page. */
+	--fall: oklch(0 0 0 / 0.08);
+	--fall-strong: oklch(0 0 0 / 0.14);
+
+	--tone-gray-soft: oklch(0.97 0 0);
+	--tone-gray-line: oklch(0.87 0 0);
+	--tone-gray-ink: oklch(0.5 0 0);
+	--tone-gray-solid: oklch(0.66 0 0);
+
+	--tone-blue-soft: oklch(0.97 0.018 250);
+	--tone-blue-line: oklch(0.87 0.06 250);
+	--tone-blue-ink: oklch(0.5 0.19 265);
+	--tone-blue-solid: oklch(0.66 0.17 255);
+
+	--tone-cyan-soft: oklch(0.97 0.02 210);
+	--tone-cyan-line: oklch(0.87 0.07 210);
+	--tone-cyan-ink: oklch(0.5 0.12 235);
+	--tone-cyan-solid: oklch(0.66 0.12 215);
+
+	--tone-teal-soft: oklch(0.97 0.022 180);
+	--tone-teal-line: oklch(0.87 0.07 180);
+	--tone-teal-ink: oklch(0.5 0.09 192);
+	--tone-teal-solid: oklch(0.66 0.12 180);
+
+	--tone-green-soft: oklch(0.97 0.03 150);
+	--tone-green-line: oklch(0.87 0.09 150);
+	--tone-green-ink: oklch(0.5 0.14 140);
+	--tone-green-solid: oklch(0.66 0.17 150);
+
+	--tone-amber-soft: oklch(0.97 0.035 90);
+	--tone-amber-line: oklch(0.87 0.1 88);
+	--tone-amber-ink: oklch(0.5 0.11 80);
+	--tone-amber-solid: oklch(0.8 0.16 80);
+
+	--tone-orange-soft: oklch(0.97 0.025 55);
+	--tone-orange-line: oklch(0.87 0.08 50);
+	--tone-orange-ink: oklch(0.5 0.16 45);
+	--tone-orange-solid: oklch(0.66 0.18 48);
+
+	--tone-red-soft: oklch(0.97 0.018 20);
+	--tone-red-line: oklch(0.87 0.07 20);
+	--tone-red-ink: oklch(0.5 0.2 22);
+	--tone-red-solid: oklch(0.66 0.21 25);
+
+	--tone-pink-soft: oklch(0.97 0.018 350);
+	--tone-pink-line: oklch(0.87 0.07 350);
+	--tone-pink-ink: oklch(0.5 0.18 355);
+	--tone-pink-solid: oklch(0.66 0.2 355);
+
+	--tone-violet-soft: oklch(0.97 0.02 300);
+	--tone-violet-line: oklch(0.87 0.07 300);
+	--tone-violet-ink: oklch(0.5 0.19 300);
+	--tone-violet-solid: oklch(0.66 0.21 300);
 }
 
 .dark {
 	color-scheme: dark;
 
-	/* The page is a step off pure black. Higher surfaces get lighter. */
-	--background: oklch(0.17 0 0);
-	--foreground: oklch(0.985 0 0);
-	--popover: oklch(0.21 0 0);
-	--popover-foreground: oklch(0.985 0 0);
+	/* Surfaces. In dark, a shadow does not show: each level up is 0.03 lighter. */
+	--canvas: oklch(0.17 0 0);
+	--surface: oklch(0.2 0 0);
+	--surface-muted: oklch(0.185 0 0);
+	--overlay: oklch(0.23 0 0);
+	--hover: oklch(0.25 0 0);
 
-	--primary: oklch(0.985 0 0);
-	--primary-foreground: oklch(0.205 0 0);
-	--secondary: oklch(0.27 0 0);
-	--secondary-foreground: oklch(0.985 0 0);
-	--muted: oklch(0.25 0 0);
-	--muted-foreground: oklch(0.71 0 0);
-	--accent: oklch(0.29 0 0);
-	--accent-foreground: oklch(0.985 0 0);
-	--destructive: oklch(0.577 0.245 27.325);
-	--destructive-foreground: oklch(0.985 0 0);
+	--ink: oklch(0.97 0 0);
+	--ink-muted: oklch(0.72 0 0);
+	--ink-subtle: oklch(0.56 0 0);
 
-	--border: oklch(0.3 0 0);
-	--input: oklch(0.52 0 0);
-	--ring: oklch(0.87 0 0);
+	--line: oklch(0.27 0 0);
+	--line-strong: oklch(0.33 0 0);
+
+	/* Less chroma than in light: a saturated fill on a dark page reads as a light source. */
+	--primary: oklch(0.5 0.15 277);
+	--primary-hover: oklch(0.55 0.15 277);
+	--primary-edge: oklch(0.42 0.13 277);
+	--primary-soft: oklch(0.27 0.045 277);
+	--primary-line: oklch(0.42 0.1 277);
+	--primary-ink: oklch(0.8 0.12 277);
+	--on-primary: oklch(0.99 0 0);
+
+	--edge: oklch(1 0 0 / 0.1);
+	--edge-strong: oklch(1 0 0 / 0.16);
+	--fall: oklch(0 0 0 / 0.3);
+	--fall-strong: oklch(0 0 0 / 0.45);
+
+	--tone-gray-soft: oklch(0.27 0 0);
+	--tone-gray-line: oklch(0.42 0 0);
+	--tone-gray-ink: oklch(0.8 0 0);
+	--tone-gray-solid: oklch(0.66 0 0);
+
+	--tone-blue-soft: oklch(0.27 0.0396 250);
+	--tone-blue-line: oklch(0.42 0.078 250);
+	--tone-blue-ink: oklch(0.8 0.12 265);
+	--tone-blue-solid: oklch(0.66 0.17 255);
+
+	--tone-cyan-soft: oklch(0.27 0.044 210);
+	--tone-cyan-line: oklch(0.42 0.091 210);
+	--tone-cyan-ink: oklch(0.8 0.12 235);
+	--tone-cyan-solid: oklch(0.66 0.12 215);
+
+	--tone-teal-soft: oklch(0.27 0.0484 180);
+	--tone-teal-line: oklch(0.42 0.091 180);
+	--tone-teal-ink: oklch(0.8 0.12 192);
+	--tone-teal-solid: oklch(0.66 0.12 180);
+
+	--tone-green-soft: oklch(0.27 0.05 150);
+	--tone-green-line: oklch(0.42 0.11 150);
+	--tone-green-ink: oklch(0.8 0.12 140);
+	--tone-green-solid: oklch(0.66 0.17 150);
+
+	--tone-amber-soft: oklch(0.27 0.05 90);
+	--tone-amber-line: oklch(0.42 0.11 88);
+	--tone-amber-ink: oklch(0.8 0.12 80);
+	--tone-amber-solid: oklch(0.8 0.16 80);
+
+	--tone-orange-soft: oklch(0.27 0.05 55);
+	--tone-orange-line: oklch(0.42 0.104 50);
+	--tone-orange-ink: oklch(0.8 0.12 45);
+	--tone-orange-solid: oklch(0.66 0.18 48);
+
+	--tone-red-soft: oklch(0.27 0.0396 20);
+	--tone-red-line: oklch(0.42 0.091 20);
+	--tone-red-ink: oklch(0.8 0.12 22);
+	--tone-red-solid: oklch(0.66 0.21 25);
+
+	--tone-pink-soft: oklch(0.27 0.0396 350);
+	--tone-pink-line: oklch(0.42 0.091 350);
+	--tone-pink-ink: oklch(0.8 0.12 355);
+	--tone-pink-solid: oklch(0.66 0.2 355);
+
+	--tone-violet-soft: oklch(0.27 0.044 300);
+	--tone-violet-line: oklch(0.42 0.091 300);
+	--tone-violet-ink: oklch(0.8 0.12 300);
+	--tone-violet-solid: oklch(0.66 0.21 300);
 }
 
-/* Exposes each token as a Tailwind utility: --color-primary -> bg-primary, text-primary, ... */
+/*
+ * What derives from other tokens: the selection and the focus ring from the primary, and the
+ * states from the tones. Declared on `.dark` too: a custom property that points at
+ * another one is resolved where it is declared, thus a `.dark` subtree has to resolve it again.
+ */
+:root,
+.dark {
+	/* The selected row is the primary's soft fill; the focus ring is its ink. */
+	--selected: var(--primary-soft);
+	--ring: var(--primary-ink);
+
+	--danger-soft: var(--tone-red-soft);
+	--danger-line: var(--tone-red-line);
+	--danger-ink: var(--tone-red-ink);
+	--danger-solid: var(--tone-red-solid);
+
+	--success-soft: var(--tone-green-soft);
+	--success-line: var(--tone-green-line);
+	--success-ink: var(--tone-green-ink);
+	--success-solid: var(--tone-green-solid);
+
+	--warning-soft: var(--tone-amber-soft);
+	--warning-line: var(--tone-amber-line);
+	--warning-ink: var(--tone-amber-ink);
+	--warning-solid: var(--tone-amber-solid);
+
+	--info-soft: var(--tone-blue-soft);
+	--info-line: var(--tone-blue-line);
+	--info-ink: var(--tone-blue-ink);
+	--info-solid: var(--tone-blue-solid);
+}
+
+/* Exposes each token as a Tailwind utility: --color-ink -> text-ink, bg-ink, border-ink, ... */
 @theme inline {
-	--color-background: var(--background);
-	--color-foreground: var(--foreground);
-	--color-popover: var(--popover);
-	--color-popover-foreground: var(--popover-foreground);
+	--font-sans:
+		'Geist Variable', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+	--font-mono: 'Geist Mono Variable', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+	/* Type scale: seven steps, each named for its job. */
+	--text-caption: 0.6875rem;
+	--text-caption--line-height: 1rem;
+	--text-small: 0.75rem;
+	--text-small--line-height: 1.125rem;
+	--text-body: 0.8125rem;
+	--text-body--line-height: 1.25rem;
+	--text-emphasis: 0.875rem;
+	--text-emphasis--line-height: 1.375rem;
+	--text-heading: 1rem;
+	--text-heading--line-height: 1.5rem;
+	--text-title: 1.25rem;
+	--text-title--line-height: 1.75rem;
+	--text-display: 1.75rem;
+	--text-display--line-height: 2.25rem;
+
+	--color-canvas: var(--canvas);
+	--color-surface: var(--surface);
+	--color-surface-muted: var(--surface-muted);
+	--color-overlay: var(--overlay);
+	--color-hover: var(--hover);
+	--color-selected: var(--selected);
+	--color-ink: var(--ink);
+	--color-ink-muted: var(--ink-muted);
+	--color-ink-subtle: var(--ink-subtle);
+	--color-line: var(--line);
+	--color-line-strong: var(--line-strong);
 	--color-primary: var(--primary);
-	--color-primary-foreground: var(--primary-foreground);
-	--color-secondary: var(--secondary);
-	--color-secondary-foreground: var(--secondary-foreground);
-	--color-muted: var(--muted);
-	--color-muted-foreground: var(--muted-foreground);
-	--color-accent: var(--accent);
-	--color-accent-foreground: var(--accent-foreground);
-	--color-destructive: var(--destructive);
-	--color-destructive-foreground: var(--destructive-foreground);
-	--color-border: var(--border);
-	--color-input: var(--input);
+	--color-primary-hover: var(--primary-hover);
+	--color-primary-soft: var(--primary-soft);
+	--color-primary-line: var(--primary-line);
+	--color-primary-ink: var(--primary-ink);
+	--color-on-primary: var(--on-primary);
+	--color-primary-edge: var(--primary-edge);
 	--color-ring: var(--ring);
 
-	--radius-sm: calc(var(--radius) - 4px);
-	--radius-md: calc(var(--radius) - 2px);
-	--radius-lg: var(--radius);
-	--radius-xl: calc(var(--radius) + 4px);
+	--color-danger-soft: var(--danger-soft);
+	--color-danger-line: var(--danger-line);
+	--color-danger-ink: var(--danger-ink);
+	--color-danger-solid: var(--danger-solid);
+	--color-success-soft: var(--success-soft);
+	--color-success-line: var(--success-line);
+	--color-success-ink: var(--success-ink);
+	--color-success-solid: var(--success-solid);
+	--color-warning-soft: var(--warning-soft);
+	--color-warning-line: var(--warning-line);
+	--color-warning-ink: var(--warning-ink);
+	--color-warning-solid: var(--warning-solid);
+	--color-info-soft: var(--info-soft);
+	--color-info-line: var(--info-line);
+	--color-info-ink: var(--info-ink);
+	--color-info-solid: var(--info-solid);
+
+	--color-tone-gray-soft: var(--tone-gray-soft);
+	--color-tone-gray-line: var(--tone-gray-line);
+	--color-tone-gray-ink: var(--tone-gray-ink);
+	--color-tone-gray-solid: var(--tone-gray-solid);
+	--color-tone-blue-soft: var(--tone-blue-soft);
+	--color-tone-blue-line: var(--tone-blue-line);
+	--color-tone-blue-ink: var(--tone-blue-ink);
+	--color-tone-blue-solid: var(--tone-blue-solid);
+	--color-tone-cyan-soft: var(--tone-cyan-soft);
+	--color-tone-cyan-line: var(--tone-cyan-line);
+	--color-tone-cyan-ink: var(--tone-cyan-ink);
+	--color-tone-cyan-solid: var(--tone-cyan-solid);
+	--color-tone-teal-soft: var(--tone-teal-soft);
+	--color-tone-teal-line: var(--tone-teal-line);
+	--color-tone-teal-ink: var(--tone-teal-ink);
+	--color-tone-teal-solid: var(--tone-teal-solid);
+	--color-tone-green-soft: var(--tone-green-soft);
+	--color-tone-green-line: var(--tone-green-line);
+	--color-tone-green-ink: var(--tone-green-ink);
+	--color-tone-green-solid: var(--tone-green-solid);
+	--color-tone-amber-soft: var(--tone-amber-soft);
+	--color-tone-amber-line: var(--tone-amber-line);
+	--color-tone-amber-ink: var(--tone-amber-ink);
+	--color-tone-amber-solid: var(--tone-amber-solid);
+	--color-tone-orange-soft: var(--tone-orange-soft);
+	--color-tone-orange-line: var(--tone-orange-line);
+	--color-tone-orange-ink: var(--tone-orange-ink);
+	--color-tone-orange-solid: var(--tone-orange-solid);
+	--color-tone-red-soft: var(--tone-red-soft);
+	--color-tone-red-line: var(--tone-red-line);
+	--color-tone-red-ink: var(--tone-red-ink);
+	--color-tone-red-solid: var(--tone-red-solid);
+	--color-tone-pink-soft: var(--tone-pink-soft);
+	--color-tone-pink-line: var(--tone-pink-line);
+	--color-tone-pink-ink: var(--tone-pink-ink);
+	--color-tone-pink-solid: var(--tone-pink-solid);
+	--color-tone-violet-soft: var(--tone-violet-soft);
+	--color-tone-violet-line: var(--tone-violet-line);
+	--color-tone-violet-ink: var(--tone-violet-ink);
+	--color-tone-violet-solid: var(--tone-violet-solid);
+
+	/* Shape: soft corners for what you press or type in, rounder for what holds content. */
+	--radius-control: 0.5rem;
+	--radius-card: 0.75rem;
+	--radius-dialog: 1rem;
+
+	/*
+	 * Shadows, each named for what casts it. A control stands a little off the page and sinks
+	 * while pressed. Pressed keeps the layers of the lift, only clear: a shadow eased into `none`
+	 * shrinks its blur on the way, and for a few frames it draws a second edge half a pixel off.
+	 */
+	--shadow-control: 0 0 0 1px var(--edge), 0 1px 2px var(--fall), 0 2px 5px -2px var(--fall);
+	--shadow-control-hover:
+		0 0 0 1px var(--edge-strong), 0 1px 2px var(--fall), 0 3px 8px -2px var(--fall-strong);
+	--shadow-control-pressed:
+		0 0 0 1px var(--edge-strong), 0 1px 2px transparent, 0 2px 5px -2px transparent;
+	/* The primary action: a darker edge, a light along its top, and a fall in its own colour. */
+	--shadow-primary:
+		0 0 0 1px var(--primary-edge), inset 0 1px 0 oklch(1 0 0 / 0.22),
+		0 2px 6px -1px color-mix(in oklch, var(--primary) 35%, transparent);
+	--shadow-primary-pressed:
+		0 0 0 1px var(--primary-edge), inset 0 1px 0 transparent, 0 2px 6px -1px transparent;
+	--shadow-card: 0 0 0 1px var(--edge), 0 2px 6px -2px var(--fall-strong);
+	--shadow-popover: 0 0 0 1px var(--edge), 0 12px 32px -8px var(--fall-strong);
+	--shadow-dialog: 0 0 0 1px var(--edge), 0 24px 64px -16px var(--fall-strong);
+	--shadow-focus:
+		0 0 0 1px var(--ring), 0 0 0 4px color-mix(in oklch, var(--ring) 18%, transparent);
+	/* The focus ring's shape in the danger colour: a field that refuses its value says so. */
+	--shadow-invalid:
+		0 0 0 1px var(--danger-solid),
+		0 0 0 4px color-mix(in oklch, var(--danger-solid) 16%, transparent);
+
+	/* Motion. `move` is for something that travels to a new place; `out-strong` answers a press. */
+	--ease-move: cubic-bezier(0.77, 0, 0.175, 1);
+	--ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 @layer base {
-	/* Tailwind v4 draws a bare `border` in currentColor. Here it uses the border token. */
+	/* Tailwind v4 draws a bare `border` in currentColor. Here it uses the line token. */
 	*,
 	::before,
 	::after,
-	::backdrop {
-		border-color: var(--color-border);
+	::backdrop,
+	::file-selector-button {
+		border-color: var(--color-line);
 	}
 
 	body {
-		background-color: var(--color-background);
-		color: var(--color-foreground);
+		background-color: var(--color-canvas);
+		color: var(--color-ink);
+		font-family: var(--font-sans);
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
 	}
 }
 

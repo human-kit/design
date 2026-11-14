@@ -1,7 +1,41 @@
 import { clsx, type ClassValue } from 'clsx';
-import { twMerge } from 'tailwind-merge';
+import { extendTailwindMerge } from 'tailwind-merge';
+import { createTV } from 'tailwind-variants';
+
+/**
+ * The scales of the theme that `tailwind-merge` does not know. Without them it reads
+ * `text-small` as a colour, thus `text-small text-ink` merges down to `text-ink` and the size
+ * goes away. The same applies to the named radii and shadows.
+ */
+const mergeConfig = {
+	extend: {
+		theme: {
+			text: ['caption', 'small', 'body', 'emphasis', 'heading', 'title', 'display'],
+			radius: ['control', 'card', 'dialog'],
+			shadow: [
+				'control',
+				'control-hover',
+				'control-pressed',
+				'primary',
+				'primary-pressed',
+				'card',
+				'popover',
+				'dialog',
+				'focus',
+				'invalid'
+			]
+		}
+	}
+};
+
+const merge = extendTailwindMerge(mergeConfig);
 
 /** Joins class names and removes the Tailwind classes that a later class overrides. */
 export function cn(...inputs: ClassValue[]) {
-	return twMerge(clsx(inputs));
+	return merge(clsx(inputs));
 }
+
+/** `tailwind-variants` with the same merge rules as `cn()`. */
+export const tv = createTV({ twMergeConfig: mergeConfig });
+
+export type { VariantProps } from 'tailwind-variants';
