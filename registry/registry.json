@@ -41,6 +41,11 @@
 			"title": "Input",
 			"description": "A text field, in a box, in place or over a line."
 		},
+		"radio-group": {
+			"type": "registry:ui",
+			"title": "Radio Group",
+			"description": "One answer out of a few options, all of them in sight."
+		},
 		"select": {
 			"type": "registry:ui",
 			"title": "Select",

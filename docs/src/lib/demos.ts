@@ -19,6 +19,7 @@ const DEMO_ORDER = [
 	'intent',
 	'tones',
 	'sizes',
+	'horizontal',
 	'icon',
 	'indeterminate',
 	'invalid',
