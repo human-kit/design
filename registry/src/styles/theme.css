@@ -404,6 +404,12 @@
 	--shadow-focus:
 		0 0 0 1px var(--ring), 0 0 0 4px color-mix(in oklch, var(--ring) 18%, transparent);
 	/*
+	 * The same halos for a field drawn as a line: the band under the line only, as wide as the
+	 * part of the halo a boxed field shows outside its ring.
+	 */
+	--shadow-focus-line: 0 3px 0 color-mix(in oklch, var(--ring) 18%, transparent);
+	--shadow-invalid-focus-line: 0 3px 0 color-mix(in oklch, var(--danger-solid) 16%, transparent);
+	/*
 	 * A field that refuses its value. The colour says the state and the halo says the focus,
 	 * on every control: at rest it is a red ring only, and the halo comes with the focus, so a
 	 * field in error still shows when it has it (WCAG 2.4.7).

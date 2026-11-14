@@ -25,7 +25,9 @@ const mergeConfig = {
 				'dialog',
 				'focus',
 				'invalid',
-				'invalid-focus'
+				'invalid-focus',
+				'focus-line',
+				'invalid-focus-line'
 			]
 		}
 	}

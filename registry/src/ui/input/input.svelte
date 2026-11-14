@@ -36,9 +36,9 @@
 					'rounded-none border-b border-line bg-transparent px-0 shadow-none',
 					'data-hovered:not-data-focused:not-data-readonly:border-ink/40',
 					'data-readonly:not-data-focused:border-transparent',
-					// The line thickens with the focus: it is this variant's halo, the same in error.
-					'data-focused:border-primary data-focused:shadow-[0_1px_0_var(--primary)]',
-					'data-invalid:border-danger-solid data-invalid:shadow-none data-invalid:data-focused:shadow-[0_1px_0_var(--danger-solid)]'
+					// The focus brings the halo of a boxed field, under the line only.
+					'data-focused:border-primary data-focused:shadow-focus-line',
+					'data-invalid:border-danger-solid data-invalid:shadow-none data-invalid:data-focused:shadow-invalid-focus-line'
 				]
 			},
 			size: {
