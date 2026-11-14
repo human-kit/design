@@ -1,5 +1,6 @@
 import { Dialog as DialogPrimitive } from '@human-kit/ui/dialog';
-import Content from './dialog-content.svelte';
+import Body from './dialog-body.svelte';
+import Content, { dialogContentVariants, type DialogSize } from './dialog-content.svelte';
 import Description from './dialog-description.svelte';
 import Footer from './dialog-footer.svelte';
 import Header from './dialog-header.svelte';
@@ -17,6 +18,7 @@ export {
 	Close,
 	Content,
 	Header,
+	Body,
 	Footer,
 	Title,
 	Description,
@@ -25,7 +27,10 @@ export {
 	Close as DialogClose,
 	Content as DialogContent,
 	Header as DialogHeader,
+	Body as DialogBody,
 	Footer as DialogFooter,
 	Title as DialogTitle,
-	Description as DialogDescription
+	Description as DialogDescription,
+	dialogContentVariants,
+	type DialogSize
 };

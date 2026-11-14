@@ -4,8 +4,10 @@
 </script>
 
 <Dialog.Root>
-	<Dialog.Trigger class={buttonVariants({ variant: 'outline' })}>Delete project</Dialog.Trigger>
-	<Dialog.Content>
+	<Dialog.Trigger class={buttonVariants({ variant: 'outline', intent: 'danger' })}>
+		Delete project
+	</Dialog.Trigger>
+	<Dialog.Content size="sm">
 		<Dialog.Header>
 			<Dialog.Title>Delete the project?</Dialog.Title>
 			<Dialog.Description>
@@ -14,9 +16,7 @@
 		</Dialog.Header>
 		<Dialog.Footer>
 			<Dialog.Close class={buttonVariants({ variant: 'outline' })}>Cancel</Dialog.Close>
-			<Dialog.Close class={buttonVariants({ variant: 'outline', intent: 'danger' })}
-				>Delete</Dialog.Close
-			>
+			<Dialog.Close class={buttonVariants({ intent: 'danger' })}>Delete project</Dialog.Close>
 		</Dialog.Footer>
 	</Dialog.Content>
 </Dialog.Root>

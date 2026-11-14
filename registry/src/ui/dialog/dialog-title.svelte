@@ -6,4 +6,4 @@
 	let { class: className, ...restProps }: ComponentProps<typeof DialogPrimitive.Title> = $props();
 </script>
 
-<DialogPrimitive.Title class={cn('text-lg leading-none font-semibold', className)} {...restProps} />
+<DialogPrimitive.Title class={cn('text-emphasis text-ink font-medium', className)} {...restProps} />

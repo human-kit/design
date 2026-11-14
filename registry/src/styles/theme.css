@@ -368,7 +368,8 @@
 	/* Shape: soft corners for what you press or type in, rounder for what holds content. */
 	--radius-control: 0.5rem;
 	--radius-card: 0.75rem;
-	--radius-dialog: 1rem;
+	/* A dialog's corner: its footer's buttons' 8px plus the 4px between them and its edge. */
+	--radius-dialog: 0.75rem;
 
 	/*
 	 * Shadows, each named for what casts it. A control stands a little off the page and sinks

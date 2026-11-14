@@ -7,4 +7,7 @@
 		$props();
 </script>
 
-<DialogPrimitive.Description class={cn('text-ink-muted text-sm', className)} {...restProps} />
+<DialogPrimitive.Description
+	class={cn('text-body text-ink-muted leading-4.75', className)}
+	{...restProps}
+/>
