@@ -61,6 +61,11 @@
 			"title": "Popover",
 			"description": "A small panel that opens from a button, for a few fields or a closer look."
 		},
+		"progress": {
+			"type": "registry:ui",
+			"title": "Progress",
+			"description": "How far a task that takes time has gone, or that it is still going."
+		},
 		"radio-group": {
 			"type": "registry:ui",
 			"title": "Radio Group",

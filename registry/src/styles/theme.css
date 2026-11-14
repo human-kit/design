@@ -481,6 +481,18 @@
 	/* Motion. `move` is for something that travels to a new place; `out-strong` answers a press. */
 	--ease-move: cubic-bezier(0.77, 0, 0.175, 1);
 	--ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+
+	/* A bar with no known end: a stretch of it crosses the track, again and again. */
+	--animate-progress-slide: progress-slide 1.6s var(--ease-move) infinite;
+
+	@keyframes progress-slide {
+		from {
+			translate: -100% 0;
+		}
+		to {
+			translate: 250% 0;
+		}
+	}
 }
 
 @layer base {
