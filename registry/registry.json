@@ -16,6 +16,11 @@
 			"title": "Accordion",
 			"description": "Rows that each open on what they hold, ruled off from one another."
 		},
+		"avatar": {
+			"type": "registry:ui",
+			"title": "Avatar",
+			"description": "A person or a place as a picture, or their initials in a colour of their own."
+		},
 		"badge": {
 			"type": "registry:ui",
 			"title": "Badge",
