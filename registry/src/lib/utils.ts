@@ -20,6 +20,7 @@ const mergeConfig = {
 				'field-hover',
 				'primary',
 				'primary-pressed',
+				'chip',
 				'card',
 				'popover',
 				'dialog',

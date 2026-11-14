@@ -11,6 +11,11 @@
 			"title": "Theme",
 			"description": "The design tokens, the light and dark themes, and the base styles."
 		},
+		"badge": {
+			"type": "registry:ui",
+			"title": "Badge",
+			"description": "A short label in a colour: a state, a category, a count."
+		},
 		"button": {
 			"type": "registry:ui",
 			"title": "Button",
