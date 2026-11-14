@@ -26,6 +26,11 @@
 			"title": "Badge",
 			"description": "A short label in a colour: a state, a category, a count."
 		},
+		"breadcrumbs": {
+			"type": "registry:ui",
+			"title": "Breadcrumbs",
+			"description": "The trail of pages above the current one, its middle folded when it runs long."
+		},
 		"button": {
 			"type": "registry:ui",
 			"title": "Button",
