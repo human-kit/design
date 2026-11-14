@@ -384,6 +384,14 @@
 	--shadow-control-pressed:
 		inset 0 1px 0 transparent, 0 0 0 1px var(--edge-strong), 0 1px 2px transparent,
 		0 2px 5px -2px transparent;
+	/*
+	 * A field: the ring and the fall of a control, but no light along its top. A field is a
+	 * place to type in, not a key to press, so it does not rise or sink. Under the pointer its
+	 * ring darkens, as a button's edge does.
+	 */
+	--shadow-field: 0 0 0 1px var(--edge), 0 1px 2px var(--fall), 0 2px 5px -2px var(--fall);
+	--shadow-field-hover:
+		0 0 0 1px var(--edge-strong), 0 1px 2px var(--fall), 0 2px 5px -2px var(--fall);
 	/* The primary action: a darker edge, a light along its top, and a fall in its own colour. */
 	--shadow-primary:
 		0 0 0 1px var(--primary-edge), inset 0 1px 0 oklch(1 0 0 / 0.22),
@@ -395,8 +403,14 @@
 	--shadow-dialog: 0 0 0 1px var(--edge), 0 24px 64px -16px var(--fall-strong);
 	--shadow-focus:
 		0 0 0 1px var(--ring), 0 0 0 4px color-mix(in oklch, var(--ring) 18%, transparent);
-	/* The focus ring's shape in the danger colour: a field that refuses its value says so. */
+	/*
+	 * A field that refuses its value. The colour says the state and the halo says the focus,
+	 * on every control: at rest it is a red ring only, and the halo comes with the focus, so a
+	 * field in error still shows when it has it (WCAG 2.4.7).
+	 */
 	--shadow-invalid:
+		0 0 0 1px var(--danger-solid), 0 1px 2px var(--fall), 0 2px 5px -2px var(--fall);
+	--shadow-invalid-focus:
 		0 0 0 1px var(--danger-solid),
 		0 0 0 4px color-mix(in oklch, var(--danger-solid) 16%, transparent);
 

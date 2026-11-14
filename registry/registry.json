@@ -21,6 +21,11 @@
 			"title": "Dialog",
 			"description": "A modal window over the page, with a title, a description and actions."
 		},
+		"input": {
+			"type": "registry:ui",
+			"title": "Input",
+			"description": "A text field, in a box, in place or over a line."
+		},
 		"select": {
 			"type": "registry:ui",
 			"title": "Select",

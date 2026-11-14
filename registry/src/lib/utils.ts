@@ -16,13 +16,16 @@ const mergeConfig = {
 				'control',
 				'control-hover',
 				'control-pressed',
+				'field',
+				'field-hover',
 				'primary',
 				'primary-pressed',
 				'card',
 				'popover',
 				'dialog',
 				'focus',
-				'invalid'
+				'invalid',
+				'invalid-focus'
 			]
 		}
 	}
