@@ -41,6 +41,11 @@
 			"title": "Checkbox",
 			"description": "A box to tick, with its label, for a yes or no and for a list of choices."
 		},
+		"checkbox-group": {
+			"type": "registry:ui",
+			"title": "Checkbox Group",
+			"description": "Several checkboxes answering one question, with its label, its hint and its error."
+		},
 		"dialog": {
 			"type": "registry:ui",
 			"title": "Dialog",

@@ -16,6 +16,8 @@
 				// The colour says the state, the halo says the focus.
 				'data-focus-visible:shadow-focus',
 				'data-invalid:shadow-invalid data-invalid:data-focus-visible:shadow-invalid-focus',
+				// A group with an error turns every box red, as it does with one alone.
+				'group-data-invalid/checkbox-group:shadow-invalid group-data-invalid/checkbox-group:data-focus-visible:shadow-invalid-focus',
 				'data-disabled:cursor-not-allowed data-disabled:opacity-45',
 				// Read-only keeps its state and its focus, and stops looking pressable.
 				'data-readonly:cursor-default data-readonly:hover:shadow-field data-readonly:data-pressed:scale-100',
@@ -30,6 +32,7 @@
 
 <script lang="ts">
 	import { Checkbox as CheckboxPrimitive } from '@human-kit/ui/checkbox';
+	import { getCheckboxGroupContext } from '@human-kit/ui/checkbox-group';
 	import Check from '@lucide/svelte/icons/check';
 	import Minus from '@lucide/svelte/icons/minus';
 	import type { ComponentProps } from 'svelte';
@@ -66,13 +69,21 @@
 	const labelId = $derived(`${controlId}-label`);
 	const descriptionId = $derived(`${controlId}-description`);
 
+	// In a group, the group's disabled reaches the box; the label follows it.
+	const group = getCheckboxGroupContext();
+	const isDisabled = $derived(disabled || Boolean(group?.isDisabled));
+
 	const styles = checkboxVariants();
 </script>
 
 {#snippet box(boxClass?: string)}
+	<!--
+		In a group the group holds the ticks and reports them through its own value, so the box's
+		own state is not taken back: a write there would make the server draw the group twice.
+	-->
 	<CheckboxPrimitive.Root
-		bind:checked
-		bind:indeterminate
+		bind:checked={() => checked, (next) => !group && (checked = next)}
+		bind:indeterminate={() => indeterminate, (next) => !group && (indeterminate = next)}
 		bind:element
 		id={controlId}
 		{disabled}
@@ -100,12 +111,12 @@
 				for={controlId}
 				class={fieldLabelVariants({
 					invalid,
-					disabled,
-					class: disabled ? 'cursor-not-allowed' : 'cursor-pointer'
+					disabled: isDisabled,
+					class: isDisabled ? 'cursor-not-allowed' : 'cursor-pointer'
 				})}>{label}</label
 			>
 			{#if description}
-				<p id={descriptionId} class={fieldMessageVariants({ class: disabled && 'opacity-45' })}>
+				<p id={descriptionId} class={fieldMessageVariants({ class: isDisabled && 'opacity-45' })}>
 					{description}
 				</p>
 			{/if}
