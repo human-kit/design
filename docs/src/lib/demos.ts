@@ -20,6 +20,7 @@ const DEMO_ORDER = [
 	'sizes',
 	'icon',
 	'invalid',
+	'disabled',
 	'pending',
 	'placeholder'
 ];

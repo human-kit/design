@@ -21,6 +21,11 @@
 			"title": "Dialog",
 			"description": "A modal window over the page, with a title, a description and actions."
 		},
+		"field": {
+			"type": "registry:ui",
+			"title": "Field",
+			"description": "A control with its label, a hint and its error, wired for assistive technology."
+		},
 		"input": {
 			"type": "registry:ui",
 			"title": "Input",
