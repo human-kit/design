@@ -21,6 +21,11 @@
 			"title": "Button",
 			"description": "A button with variants, sizes and a pending state."
 		},
+		"checkbox": {
+			"type": "registry:ui",
+			"title": "Checkbox",
+			"description": "A box to tick, with its label, for a yes or no and for a list of choices."
+		},
 		"dialog": {
 			"type": "registry:ui",
 			"title": "Dialog",

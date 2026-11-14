@@ -11,7 +11,7 @@ const mergeConfig = {
 	extend: {
 		theme: {
 			text: ['caption', 'small', 'body', 'emphasis', 'heading', 'title', 'display'],
-			radius: ['control', 'card', 'dialog'],
+			radius: ['check', 'control', 'card', 'dialog'],
 			shadow: [
 				'control',
 				'control-hover',

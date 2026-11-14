@@ -20,6 +20,7 @@ const DEMO_ORDER = [
 	'tones',
 	'sizes',
 	'icon',
+	'indeterminate',
 	'invalid',
 	'disabled',
 	'pending',
