@@ -81,6 +81,11 @@
 			"title": "Separator",
 			"description": "A line between two groups, or one that the pointer and the keys move to size a pane."
 		},
+		"slider": {
+			"type": "registry:ui",
+			"title": "Slider",
+			"description": "A number, or a range of two, picked by moving a thumb along a track."
+		},
 		"switch": {
 			"type": "registry:ui",
 			"title": "Switch",
