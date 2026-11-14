@@ -22,7 +22,8 @@ const DEMO_ORDER = [
 	'invalid',
 	'disabled',
 	'pending',
-	'placeholder'
+	'placeholder',
+	'field'
 ];
 
 export function demosOf(component: string): Demo[] {

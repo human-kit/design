@@ -8,14 +8,18 @@
 	];
 </script>
 
-<div class="flex w-full max-w-xs flex-col gap-2">
-	<Select.Root name="plan" placeholder="Select a plan" items={plans} disabledKeys={['enterprise']}>
-		<Select.Label>Plan</Select.Label>
-		<Select.Trigger />
-		<Select.Content>
-			{#each plans as plan (plan.id)}
-				<Select.Item id={plan.id}>{plan.label}</Select.Item>
-			{/each}
-		</Select.Content>
-	</Select.Root>
-</div>
+<Select.Root
+	name="plan"
+	placeholder="Select a plan"
+	items={plans}
+	disabledKeys={['enterprise']}
+	class="w-64"
+>
+	<Select.Label>Plan</Select.Label>
+	<Select.Trigger />
+	<Select.Content>
+		{#each plans as plan (plan.id)}
+			<Select.Item id={plan.id}>{plan.label}</Select.Item>
+		{/each}
+	</Select.Content>
+</Select.Root>

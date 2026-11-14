@@ -5,6 +5,11 @@
 		invalid: boolean;
 		required: boolean;
 		disabled: boolean;
+		/**
+		 * The label's id. A control that is not an `<input>` (a select's trigger) is named
+		 * through it, since its own id is not the one the label points at.
+		 */
+		'aria-labelledby'?: string;
 		'aria-describedby'?: string;
 	};
 </script>
@@ -49,6 +54,7 @@
 	const uid = $props.id();
 	const controlId = $derived(id ?? `field-${uid}`);
 	const invalid = $derived(Boolean(error));
+	const labelId = $derived(`${controlId}-label`);
 	const messageId = $derived(`${controlId}-message`);
 	const hasMessage = $derived(Boolean(error || description));
 
@@ -57,13 +63,16 @@
 		invalid,
 		required,
 		disabled,
+		'aria-labelledby': label ? labelId : undefined,
 		'aria-describedby': hasMessage ? messageId : undefined
 	});
 </script>
 
 <div class={cn('flex min-w-0 flex-col', className)}>
 	{#if label}
-		<FieldLabel for={controlId} {invalid} {disabled} {required} class="mb-1">{label}</FieldLabel>
+		<FieldLabel id={labelId} for={controlId} {invalid} {disabled} {required} class="mb-1"
+			>{label}</FieldLabel
+		>
 	{/if}
 	{@render children(control)}
 	{#if error}

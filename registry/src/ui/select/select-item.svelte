@@ -11,21 +11,30 @@
 	}: ComponentProps<typeof SelectPrimitive.Item> = $props();
 </script>
 
+<!--
+	A row is quiet at rest, like a ghost button, and comes up to ink under the pointer or the
+	keyboard and while it is chosen. The check leads the row in a column of its own, so the text
+	starts at the same place whether the row is chosen or not. Its corner is the panel's less the
+	panel's padding, so the lit row nests in it.
+-->
 <SelectPrimitive.Item
 	class={cn(
-		'relative flex w-full cursor-default items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden select-none',
-		'data-focused:bg-hover data-focused:text-ink',
-		'data-disabled:pointer-events-none data-disabled:opacity-50',
-		// The list moves the focus between options with the arrow keys, thus the highlight
-		// above is the keyboard focus. The ring marks it when it comes from the keyboard.
-		'data-focus-visible:outline-ring data-focus-visible:outline-2 data-focus-visible:-outline-offset-2 data-focus-visible:outline-solid',
-		'[&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
+		'rounded-control relative grid h-6 shrink-0 cursor-default grid-cols-[0.875rem_minmax(0,1fr)] items-center gap-1.5 pr-1.5 pl-1',
+		'text-body text-ink-muted outline-hidden transition-colors select-none',
+		'data-focused:bg-hover data-focused:text-ink data-selected:text-ink',
+		// The list moves the focus between rows with the arrow keys, thus the shade above is
+		// also the keyboard's. The ring says it when the keyboard put it there.
+		'data-focus-visible:shadow-focus',
+		'data-disabled:pointer-events-none data-disabled:opacity-45',
+		'[&_svg]:pointer-events-none [&_svg]:size-3.5 [&_svg]:shrink-0',
 		className
 	)}
 	{...restProps}
 >
-	{@render children?.()}
-	<SelectPrimitive.ItemIndicator class="absolute right-2 flex size-4 items-center justify-center">
-		<Check />
-	</SelectPrimitive.ItemIndicator>
+	<span class="text-ink-muted col-start-1 flex items-center">
+		<SelectPrimitive.ItemIndicator class="flex">
+			<Check />
+		</SelectPrimitive.ItemIndicator>
+	</span>
+	<span class="col-start-2 truncate">{@render children?.()}</span>
 </SelectPrimitive.Item>
