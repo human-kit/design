@@ -61,6 +61,11 @@
 			"title": "Switch",
 			"description": "An on and off setting that takes effect at once, with its label."
 		},
+		"tabs": {
+			"type": "registry:ui",
+			"title": "Tabs",
+			"description": "Sections of one place, one in view at a time, picked from a strip or a rail."
+		},
 		"textarea": {
 			"type": "registry:ui",
 			"title": "Textarea",

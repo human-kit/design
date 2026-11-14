@@ -48,6 +48,8 @@
 	--surface-hover: oklch(0.985 0 0);
 	--surface-pressed: oklch(0.985 0 0);
 	--overlay: oklch(0.985 0 0);
+	/* The chip of segmented tabs, lifted off its sunken rail. */
+	--segment-chip: oklch(0.995 0 0);
 	--hover: oklch(0.955 0 0);
 
 	/* Ink: the text, in three weights of emphasis. Subtle is for placeholders and decoration. */
@@ -146,6 +148,7 @@
 	--surface-hover: oklch(0.235 0 0);
 	--surface-pressed: oklch(0.18 0 0);
 	--overlay: oklch(0.23 0 0);
+	--segment-chip: oklch(0.3 0 0);
 	--hover: oklch(0.25 0 0);
 
 	--ink: oklch(0.97 0 0);
@@ -287,6 +290,7 @@
 	--color-surface-hover: var(--surface-hover);
 	--color-surface-pressed: var(--surface-pressed);
 	--color-overlay: var(--overlay);
+	--color-segment-chip: var(--segment-chip);
 	--color-hover: var(--hover);
 	--color-selected: var(--selected);
 	--color-ink: var(--ink);
@@ -402,6 +406,8 @@
 	--shadow-primary-pressed:
 		0 0 0 1px var(--primary-edge), inset 0 1px 0 transparent, 0 2px 6px -1px transparent;
 	--shadow-chip: 0 1px 2px var(--fall);
+	/* The rail of segmented tabs: sunk, with only an edge, as a switch's rail off. */
+	--shadow-segment-rail: inset 0 0 0 1px var(--edge);
 	/* A switch: its rail off only has an edge, so a translucent grey on grey still shows. */
 	--shadow-switch-rail: inset 0 0 0 1px var(--edge);
 	/* Its rail on: a light along the top and a darker edge of its own colour. */

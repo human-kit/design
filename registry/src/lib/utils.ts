@@ -21,6 +21,7 @@ const mergeConfig = {
 				'primary',
 				'primary-pressed',
 				'chip',
+				'segment-rail',
 				'switch-rail',
 				'switch-on',
 				'switch-thumb',
