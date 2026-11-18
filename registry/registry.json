@@ -36,6 +36,11 @@
 			"title": "Button",
 			"description": "A button with variants, sizes and a pending state."
 		},
+		"calendar": {
+			"type": "registry:ui",
+			"title": "Calendar",
+			"description": "A month to pick a day or a stretch of days from."
+		},
 		"checkbox": {
 			"type": "registry:ui",
 			"title": "Checkbox",
