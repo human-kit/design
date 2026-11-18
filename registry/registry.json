@@ -51,6 +51,11 @@
 			"title": "Collapsible",
 			"description": "A button that shows and hides what follows it, the panel opening on its own height."
 		},
+		"combobox": {
+			"type": "registry:ui",
+			"title": "Combobox",
+			"description": "A field that filters a list as you type, and takes one of its rows."
+		},
 		"dialog": {
 			"type": "registry:ui",
 			"title": "Dialog",
