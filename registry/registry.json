@@ -131,6 +131,11 @@
 			"title": "Textarea",
 			"description": "A field for a few lines of text, growing with what is typed."
 		},
+		"toast": {
+			"type": "registry:ui",
+			"title": "Toast",
+			"description": "A short message about something that happened, in a corner, for a few seconds."
+		},
 		"toggle": {
 			"type": "registry:ui",
 			"title": "Toggle",
