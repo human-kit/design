@@ -12,7 +12,7 @@
 			// buttons beside it. The ring is the only thing that changes, so it is the only thing
 			// that transitions. Focus shows on any focus, not only from the keyboard: the caret
 			// lands in the field either way.
-			'shadow-field transition-[box-shadow,border-color,opacity] duration-150 ease-out',
+			'shadow-field transition-[box-shadow,opacity] duration-150 ease-out',
 			'data-focused:shadow-focus data-invalid:shadow-invalid data-invalid:data-focused:shadow-invalid-focus',
 			'data-disabled:cursor-not-allowed data-disabled:opacity-45',
 			// A value that cannot be changed reads as a value, not as a place to type: no box and

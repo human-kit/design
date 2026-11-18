@@ -16,7 +16,7 @@ export const collapsibleVariants = tv({
 			'data-hovered:bg-hover data-disabled:cursor-not-allowed data-disabled:opacity-45'
 		],
 		chevron: [
-			'size-3.5 shrink-0 text-ink-subtle transition-transform duration-200 ease-out motion-reduce:transition-none',
+			'size-3.5 shrink-0 text-ink-subtle transition-transform duration-150 ease-out motion-reduce:transition-none',
 			'group-data-hovered/collapsible-trigger:text-ink-muted group-data-open/collapsible-trigger:rotate-90',
 			'rtl:-scale-x-100'
 		],

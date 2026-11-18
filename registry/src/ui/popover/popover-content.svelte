@@ -47,7 +47,7 @@
 	aria-describedby={describedby}
 	class={cn(
 		'rounded-card bg-overlay text-body text-ink shadow-popover z-50 flex w-72 max-w-[calc(100vw-1rem)] flex-col gap-3 p-3 outline-hidden',
-		'data-entering:animate-in data-entering:fade-in-0 data-entering:zoom-in-98 data-entering:animation-duration-[120ms]',
+		'data-entering:animate-in data-entering:fade-in-0 data-entering:zoom-in-98 data-entering:animation-duration-[100ms]',
 		'data-exiting:animate-out data-exiting:fade-out-0 data-exiting:zoom-out-98 data-exiting:animation-duration-[100ms]',
 		'data-[placement=bottom]:origin-top data-[placement=left]:origin-right data-[placement=right]:origin-left data-[placement=top]:origin-bottom',
 		className

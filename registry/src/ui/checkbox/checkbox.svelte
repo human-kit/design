@@ -7,7 +7,7 @@
 				'group/checkbox relative inline-flex size-4 shrink-0 cursor-pointer items-center justify-center rounded-check outline-hidden select-none',
 				// The box is 16px, the target 24px: the band around it presses it too (WCAG 2.5.8).
 				"before:absolute before:-inset-1 before:content-['']",
-				'transition-[background-color,box-shadow,scale] duration-100 ease-out data-pressed:scale-92',
+				'transition-[background-color,box-shadow] duration-75 ease-out',
 				// Empty, it is a field: the ring of an input, darker under the pointer.
 				'bg-surface shadow-field hover:shadow-field-hover',
 				// Ticked, it is the primary colour, since the tick is the answer it gives.
@@ -20,7 +20,7 @@
 				'group-data-invalid/checkbox-group:shadow-invalid group-data-invalid/checkbox-group:data-focus-visible:shadow-invalid-focus',
 				'data-disabled:cursor-not-allowed data-disabled:opacity-45',
 				// Read-only keeps its state and its focus, and stops looking pressable.
-				'data-readonly:cursor-default data-readonly:hover:shadow-field data-readonly:data-pressed:scale-100',
+				'data-readonly:cursor-default data-readonly:hover:shadow-field',
 				'data-readonly:data-checked:hover:bg-primary data-readonly:data-indeterminate:hover:bg-primary'
 			],
 			// Both marks are drawn and the state picks one, so an uncontrolled box shows the right one.

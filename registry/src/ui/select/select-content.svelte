@@ -20,7 +20,7 @@
 <SelectPrimitive.Popover
 	class={cn(
 		'rounded-card bg-overlay text-ink shadow-popover w-(--trigger-width) min-w-32 overflow-hidden',
-		'data-entering:animate-in data-entering:fade-in-0 data-entering:zoom-in-98 data-entering:animation-duration-[120ms]',
+		'data-entering:animate-in data-entering:fade-in-0 data-entering:zoom-in-98 data-entering:animation-duration-[100ms]',
 		'data-exiting:animate-out data-exiting:fade-out-0 data-exiting:zoom-out-98 data-exiting:animation-duration-[100ms]',
 		'data-[placement=bottom]:origin-top data-[placement=top]:origin-bottom',
 		className

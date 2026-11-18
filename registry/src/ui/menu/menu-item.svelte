@@ -10,7 +10,7 @@
 	export const menuItemVariants = tv({
 		slots: {
 			row: [
-				'relative flex h-6 shrink-0 cursor-default items-center gap-2 rounded-control px-1.5 text-body text-ink-muted outline-hidden select-none',
+				'relative flex h-6 shrink-0 cursor-default items-center gap-2 rounded-control px-1.5 text-body text-ink-muted outline-hidden transition-ink select-none',
 				'data-highlighted:bg-hover data-highlighted:text-ink',
 				'data-disabled:pointer-events-none data-disabled:opacity-45',
 				'[&_svg]:pointer-events-none [&_svg]:size-3.5 [&_svg]:shrink-0 [&_svg]:text-ink-subtle data-highlighted:[&_svg]:text-ink-muted'

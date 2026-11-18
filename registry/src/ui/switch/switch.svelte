@@ -21,7 +21,7 @@
 			],
 			thumb: [
 				'pointer-events-none block rounded-full bg-white shadow-switch-thumb',
-				'transition-[translate,width] duration-250 ease-out-strong motion-reduce:transition-none'
+				'transition-[translate,width] duration-260 ease-(--ease-drawer) motion-reduce:transition-none'
 			]
 		},
 		// Read-only keeps its focus, but the thumb no longer reaches for the other side.

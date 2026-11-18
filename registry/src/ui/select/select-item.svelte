@@ -20,7 +20,7 @@
 <SelectPrimitive.Item
 	class={cn(
 		'rounded-control relative grid h-6 shrink-0 cursor-default grid-cols-[0.875rem_minmax(0,1fr)] items-center gap-1.5 pr-1.5 pl-1',
-		'text-body text-ink-muted outline-hidden transition-colors select-none',
+		'text-body text-ink-muted transition-ink outline-hidden select-none',
 		'data-focused:bg-hover data-focused:text-ink data-selected:text-ink',
 		// The list moves the focus between rows with the arrow keys, thus the shade above is
 		// also the keyboard's. The ring says it when the keyboard put it there.

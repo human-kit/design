@@ -13,7 +13,7 @@
 		slots: {
 			root: [
 				'flex w-full min-w-0 items-center rounded-control ps-2 pe-0.5 text-body',
-				'shadow-field transition-[box-shadow,border-color,background-color,opacity] duration-150 ease-out',
+				'shadow-field transition-[box-shadow,background-color,opacity] duration-150 ease-out',
 				'focus-within:shadow-focus data-invalid:shadow-invalid data-invalid:focus-within:shadow-invalid-focus',
 				'data-disabled:cursor-not-allowed data-disabled:opacity-45',
 				'data-readonly:bg-transparent data-readonly:not-focus-within:shadow-none'

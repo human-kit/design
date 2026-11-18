@@ -7,7 +7,7 @@
 				'relative inline-flex size-4 shrink-0 cursor-pointer items-center justify-center rounded-full outline-hidden select-none',
 				// The circle is 16px, the target 24px: the band around it presses it too (WCAG 2.5.8).
 				"before:absolute before:-inset-1 before:content-['']",
-				'transition-[background-color,box-shadow,scale] duration-100 ease-out data-pressed:scale-92',
+				'transition-[background-color,box-shadow] duration-75 ease-out',
 				// Empty, it is a field: the ring of an input, darker under the pointer. Chosen, it is
 				// the primary colour, as a ticked checkbox is.
 				'bg-surface shadow-field hover:shadow-field-hover',
@@ -18,7 +18,7 @@
 				'data-disabled:cursor-not-allowed data-disabled:opacity-45',
 				// Read-only keeps its answer and its focus, and stops looking pressable.
 				'group-data-readonly/radio-group:cursor-default group-data-readonly/radio-group:hover:shadow-field',
-				'group-data-readonly/radio-group:data-pressed:scale-100 group-data-readonly/radio-group:data-checked:hover:bg-primary'
+				'group-data-readonly/radio-group:data-checked:hover:bg-primary'
 			],
 			dot: 'pointer-events-none size-1.5 rounded-full bg-on-primary'
 		}

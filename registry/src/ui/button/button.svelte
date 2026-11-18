@@ -14,9 +14,8 @@
 	export const buttonVariants = tv({
 		base: [
 			'relative inline-flex max-w-full min-w-0 shrink-0 cursor-pointer items-center justify-center gap-1.5 rounded-control font-medium whitespace-nowrap select-none',
-			'transition-[opacity,box-shadow,color,background-color,scale] duration-150 ease-out outline-hidden',
-			// A press answers at once: the button gives a little under the pointer.
-			'data-pressed:scale-[0.97] motion-reduce:data-pressed:scale-100',
+			// A press shows in the shadow and the fill alone: the box does not shrink under it.
+			'transition-[opacity,box-shadow,color,background-color] duration-150 ease-out outline-hidden',
 			// The ring follows `data-focus-visible`, not `:focus-visible`: the primitive also
 			// shows it when the focus comes back from an overlay after a key press.
 			'data-focus-visible:shadow-focus',
@@ -66,12 +65,12 @@
 		},
 		compoundVariants: [
 			// A link has no box of its own, thus no size applies to it. It is laid out as text, so
-			// its underline reaches what is inside it. It does not give under a press, and its focus
-			// ring keeps 2px of air: a ring tight on the letters cramps them.
+			// its underline reaches what is inside it. Its focus ring keeps 2px of air: a ring tight
+			// on the letters cramps them.
 			{
 				variant: 'link',
 				class: [
-					'inline-block h-auto w-fit justify-start p-0 text-body shadow-none data-pressed:scale-100',
+					'inline-block h-auto w-fit justify-start p-0 text-body shadow-none',
 					// The focus ring is the same as on every other button, drawn by a pseudo-element a
 					// little larger than the text: it gets room around the letters and takes none from
 					// the layout. Padding offset by a negative margin broke in a shrink-to-fit container.

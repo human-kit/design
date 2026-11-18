@@ -19,13 +19,13 @@ export const accordionVariants = tv({
 			'data-disabled:cursor-not-allowed data-disabled:opacity-45'
 		],
 		chevron: [
-			'size-4 shrink-0 text-ink-subtle transition-transform duration-200 ease-out motion-reduce:transition-none',
+			'size-4 shrink-0 text-ink-subtle transition-transform duration-150 ease-out motion-reduce:transition-none',
 			'group-data-hovered/accordion-trigger:text-ink-muted group-data-open/accordion-trigger:rotate-180'
 		],
 		// The primitive measures the content into `--accordion-panel-height` and marks the start
 		// and the end of the motion, so a real height is animated.
 		panel: [
-			'h-(--accordion-panel-height) overflow-hidden transition-[height,opacity] duration-200 ease-out',
+			'h-(--accordion-panel-height) overflow-hidden transition-[height,opacity] duration-150 ease-out',
 			'data-starting-style:h-0 data-starting-style:opacity-0 data-ending-style:h-0 data-ending-style:opacity-0',
 			'motion-reduce:transition-none'
 		],

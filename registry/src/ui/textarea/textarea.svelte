@@ -10,7 +10,7 @@
 		base: [
 			// No handle: the box grows with what is typed, so a handle would only fight it.
 			'block w-full min-w-0 resize-none rounded-control px-2 py-1.5 text-body leading-5 text-ink outline-hidden placeholder:text-ink-subtle',
-			'shadow-field transition-[box-shadow,border-color,opacity] duration-150 ease-out',
+			'shadow-field transition-[box-shadow,opacity] duration-150 ease-out',
 			'data-focused:shadow-focus data-invalid:shadow-invalid data-invalid:data-focused:shadow-invalid-focus',
 			'data-disabled:cursor-not-allowed data-disabled:opacity-45',
 			// A text that cannot be changed reads as a text: no box and no ring until it has the
