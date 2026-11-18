@@ -56,6 +56,11 @@
 			"title": "Dialog",
 			"description": "A modal window over the page, with a title, a description and actions."
 		},
+		"drawer": {
+			"type": "registry:ui",
+			"title": "Drawer",
+			"description": "A panel that floats in from an edge, over the page, and a swipe sends back."
+		},
 		"field": {
 			"type": "registry:ui",
 			"title": "Field",

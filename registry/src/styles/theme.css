@@ -483,6 +483,9 @@
 	--ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
 	/* A drawer's curve: it settles into place instead of stopping. The switch's thumb lands on it. */
 	--ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+	/* What arrives slows hard into place; what leaves goes quicker, on a softer curve. */
+	--ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+	--ease-out-cubic: cubic-bezier(0.33, 1, 0.68, 1);
 	/*
 	 * A curve sampled from a spring: it starts fast, runs a hair past its mark and settles back,
 	 * so a move reads as physical rather than as a curve. It settles in 600ms; most of the move
