@@ -136,6 +136,11 @@
 			"title": "Radio Group",
 			"description": "One answer out of a few options, all of them in sight."
 		},
+		"rating": {
+			"type": "registry:ui",
+			"title": "Rating",
+			"description": "A score on a small scale, given with a press on a star or with the arrows."
+		},
 		"search-field": {
 			"type": "registry:ui",
 			"title": "Search Field",
