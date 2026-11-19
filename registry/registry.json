@@ -16,6 +16,11 @@
 			"title": "Accordion",
 			"description": "Rows that each open on what they hold, ruled off from one another."
 		},
+		"autocomplete": {
+			"type": "registry:ui",
+			"title": "Autocomplete",
+			"description": "A list always in sight, with a search row at its head that filters it as you type."
+		},
 		"avatar": {
 			"type": "registry:ui",
 			"title": "Avatar",
