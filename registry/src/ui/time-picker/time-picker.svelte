@@ -63,9 +63,9 @@
 			item: [
 				'flex h-6 cursor-default items-center justify-center text-ink-subtle tabular-nums transition-ink',
 				'hover:text-ink data-selected:font-medium data-selected:text-ink',
-				// The keyboard focus of a column: a ring inside the chosen row, as a ring outside it would be
-				// cut by the scroll.
-				'rounded-control in-data-focus-visible:data-selected:inset-ring-[1.5px] in-data-focus-visible:data-selected:inset-ring-primary',
+				// The keyboard focus of a column: the kit's focus drawn inward on the chosen row, as one
+				// outside it would be cut by the scroll.
+				'rounded-control in-data-focus-visible:data-selected:shadow-focus-inset',
 				'data-disabled:cursor-not-allowed data-disabled:opacity-45'
 			]
 		},

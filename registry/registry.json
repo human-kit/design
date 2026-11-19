@@ -56,6 +56,11 @@
 			"title": "Checkbox Group",
 			"description": "Several checkboxes answering one question, with its label, its hint and its error."
 		},
+		"clock": {
+			"type": "registry:ui",
+			"title": "Clock",
+			"description": "A time on wheels, out of a field: hours, minutes and the day period, scrolled or stepped with the arrows."
+		},
 		"collapsible": {
 			"type": "registry:ui",
 			"title": "Collapsible",

@@ -9,7 +9,7 @@
 	const pill = [
 		'h-4 w-2 rounded-full bg-white shadow-[0_0_0_1px_rgb(0_0_0/0.15),0_1px_2px_rgb(0_0_0/0.3)]',
 		'transition-[scale,box-shadow] duration-150 ease-out motion-reduce:transition-none data-dragging:scale-110',
-		'data-focus-visible:shadow-[0_0_0_1px_rgb(0_0_0/0.15),0_0_0_3px_var(--color-primary)]'
+		'data-focus-visible:shadow-focus'
 	];
 
 	/**
@@ -34,7 +34,8 @@
 			areaThumb: [
 				'size-3.5 rounded-full bg-(--color-picker-value) ring-2 ring-white shadow-[0_0_0_3px_rgb(0_0_0/0.12),0_1px_3px_rgb(0_0_0/0.3)]',
 				'transition-[scale,box-shadow] duration-150 ease-out motion-reduce:transition-none data-dragging:scale-110',
-				'data-focus-visible:shadow-[0_0_0_3px_var(--color-primary),0_1px_3px_rgb(0_0_0/0.3)]'
+				// The kit's focus, outside the white ring: 1px of the ring colour, then the halo.
+				'data-focus-visible:shadow-[0_0_0_3px_var(--ring),0_0_0_6px_color-mix(in_oklch,var(--ring)_18%,transparent)]'
 			],
 			body: 'flex flex-col gap-2.5 p-3',
 			// A 12px strip. The pills stop 4px short of each end, half their width, so one at either
@@ -71,7 +72,7 @@
 				'transition-shadow duration-150 ease-out',
 				// The chosen one wears a ring, a gap of the card between.
 				'data-selected:shadow-[0_0_0_2px_var(--color-surface),0_0_0_3.5px_var(--color-ink)]',
-				'data-focus-visible:shadow-[0_0_0_2px_var(--color-surface),0_0_0_3.5px_var(--color-primary)]',
+				'data-focus-visible:shadow-[0_0_0_2px_var(--color-surface),0_0_0_3px_var(--ring),0_0_0_6px_color-mix(in_oklch,var(--ring)_18%,transparent)]',
 				'data-disabled:cursor-not-allowed'
 			]
 		}
