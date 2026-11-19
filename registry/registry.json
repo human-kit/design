@@ -86,6 +86,11 @@
 			"title": "Drawer",
 			"description": "A panel that floats in from an edge, over the page, and a swipe sends back."
 		},
+		"dropzone": {
+			"type": "registry:ui",
+			"title": "Dropzone",
+			"description": "A place to drop files, or to choose them with a click or the keyboard."
+		},
 		"field": {
 			"type": "registry:ui",
 			"title": "Field",
