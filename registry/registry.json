@@ -91,6 +91,11 @@
 			"title": "Input",
 			"description": "A text field, in a box, in place or over a line."
 		},
+		"listbox": {
+			"type": "registry:ui",
+			"title": "Listbox",
+			"description": "A list on the page to pick one row or several, with the keyboard or the pointer."
+		},
 		"menu": {
 			"type": "registry:ui",
 			"title": "Menu",
