@@ -61,6 +61,11 @@
 			"title": "Combobox",
 			"description": "A field that filters a list as you type, and takes one of its rows."
 		},
+		"date-picker": {
+			"type": "registry:ui",
+			"title": "Date Picker",
+			"description": "A date typed part by part, or picked from a month that opens under it."
+		},
 		"dialog": {
 			"type": "registry:ui",
 			"title": "Dialog",
