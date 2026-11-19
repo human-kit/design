@@ -66,6 +66,11 @@
 			"title": "Date Picker",
 			"description": "A date typed part by part, or picked from a month that opens under it."
 		},
+		"date-range-picker": {
+			"type": "registry:ui",
+			"title": "Date Range Picker",
+			"description": "Two dates, a start and an end, typed part by part or picked from two months."
+		},
 		"dialog": {
 			"type": "registry:ui",
 			"title": "Dialog",
