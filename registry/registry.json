@@ -200,6 +200,11 @@
 			"type": "registry:ui",
 			"title": "Tooltip",
 			"description": "A short line that describes a control, under the pointer or the keyboard focus."
+		},
+		"tree": {
+			"type": "registry:ui",
+			"title": "Tree",
+			"description": "Nested rows that open and close, to pick one or several."
 		}
 	}
 }
