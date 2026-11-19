@@ -201,6 +201,11 @@
 			"title": "Tooltip",
 			"description": "A short line that describes a control, under the pointer or the keyboard focus."
 		},
+		"transfer-list": {
+			"type": "registry:ui",
+			"title": "Transfer List",
+			"description": "Two lists side by side, with buttons that move rows from one to the other."
+		},
 		"tree": {
 			"type": "registry:ui",
 			"title": "Tree",
