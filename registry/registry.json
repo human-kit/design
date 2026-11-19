@@ -141,6 +141,11 @@
 			"title": "Overflow Row",
 			"description": "Items on one line, as many as fit, the rest counted in a chip that names them."
 		},
+		"pagination": {
+			"type": "registry:ui",
+			"title": "Pagination",
+			"description": "The pages of a long list: the ends, the current one with its neighbours, and an ellipsis for the rest."
+		},
 		"pin-input": {
 			"type": "registry:ui",
 			"title": "Pin Input",
