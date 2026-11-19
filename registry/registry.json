@@ -16,6 +16,11 @@
 			"title": "Accordion",
 			"description": "Rows that each open on what they hold, ruled off from one another."
 		},
+		"alert": {
+			"type": "registry:ui",
+			"title": "Alert",
+			"description": "A message that stays in the page, with a mark for its kind and, if it needs them, an action and a close."
+		},
 		"autocomplete": {
 			"type": "registry:ui",
 			"title": "Autocomplete",
