@@ -116,6 +116,11 @@
 			"title": "Input",
 			"description": "A text field, in a box, in place or over a line."
 		},
+		"kbd": {
+			"type": "registry:ui",
+			"title": "Kbd",
+			"description": "A key to press, written in a line of text, alone or as a combination."
+		},
 		"listbox": {
 			"type": "registry:ui",
 			"title": "Listbox",
