@@ -171,6 +171,11 @@
 			"title": "Switch",
 			"description": "An on and off setting that takes effect at once, with its label."
 		},
+		"table": {
+			"type": "registry:ui",
+			"title": "Table",
+			"description": "Rows of data in columns, sorted, resized and chosen with the pointer or the keyboard."
+		},
 		"tabs": {
 			"type": "registry:ui",
 			"title": "Tabs",
