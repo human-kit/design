@@ -126,6 +126,11 @@
 			"title": "Number Field",
 			"description": "A number typed in a box, or stepped with a minus, a plus and the arrow keys."
 		},
+		"overflow-row": {
+			"type": "registry:ui",
+			"title": "Overflow Row",
+			"description": "Items on one line, as many as fit, the rest counted in a chip that names them."
+		},
 		"pin-input": {
 			"type": "registry:ui",
 			"title": "Pin Input",

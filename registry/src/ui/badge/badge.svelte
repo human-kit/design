@@ -86,7 +86,9 @@
 			{ variant: 'default', size: 'default', class: 'px-2' },
 			{ variant: 'default', size: 'default', dot: true, class: 'pl-1.5' },
 			// Tighter where the dot is: even padding around it left the words against the far edge.
-			{ variant: 'outline', class: 'pr-2 pl-1.5' }
+			{ variant: 'outline', dot: true, class: 'pr-2 pl-1.5' },
+			// Without the dot, the plain chip: a label, a tag, a count, with no state to say.
+			{ variant: 'outline', dot: false, class: 'px-2' }
 		],
 		defaultVariants: { variant: 'default', size: 'default' }
 	});
@@ -113,7 +115,7 @@
 		variant?: BadgeVariant;
 		tone?: BadgeTone;
 		size?: BadgeSize;
-		/** The tone's dot before the words. Only `default` can go without it. */
+		/** The tone's dot before the words. `text` always has it: without a chip, the dot is the badge. */
 		dot?: boolean;
 	};
 
@@ -127,8 +129,8 @@
 		...restProps
 	}: Props = $props();
 
-	// Outside the chip, the dot is all that carries the tone.
-	const withDot = $derived(dot || variant !== 'default');
+	// Outside a chip, the dot is all there is. An outline chip without it is a plain label.
+	const withDot = $derived(dot || variant === 'text');
 </script>
 
 <span
