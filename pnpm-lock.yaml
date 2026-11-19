@@ -103,8 +103,8 @@ importers:
         specifier: ^5.3.0
         version: 5.3.0
       '@human-kit/ui':
-        specifier: ^1.4.3
-        version: 1.4.3(svelte@5.57.3(@typescript-eslint/types@8.72.1))
+        specifier: ^1.5.3
+        version: 1.5.3(svelte@5.57.3(@typescript-eslint/types@8.72.1))
       '@lucide/svelte':
         specifier: ^0.574.0
         version: 0.574.0(svelte@5.57.3(@typescript-eslint/types@8.72.1))
@@ -395,8 +395,8 @@ packages:
   '@fontsource-variable/geist@5.3.0':
     resolution: {integrity: sha512-j0m+vLQuG5XAYoHtGCVu0spvlGreR3EzpECUVzkFmI1mTVnAO38l/NEPDCFgZ177JxzYJCLSmTQibIiYPilGrA==}
 
-  '@human-kit/ui@1.4.3':
-    resolution: {integrity: sha512-YF+IrZUF4F5yuJoTtwgxd1jRslKVcwjc6Dbz9NX8EE62YFry6qcbBFiTFUOYOp72NvFmGxcX4frKXvz0++jyAw==}
+  '@human-kit/ui@1.5.3':
+    resolution: {integrity: sha512-SgcFblUa0xJ0IB03gKJeBtWyZ8Ioc6YYqvwNygtNzW+DajhRhMQ04zi9rKOGeiCewfOrf7xxSsN2tGzerP68Fg==}
     engines: {node: '>=20'}
     peerDependencies:
       svelte: ^5.0.0
@@ -2349,7 +2349,7 @@ snapshots:
 
   '@fontsource-variable/geist@5.3.0': {}
 
-  '@human-kit/ui@1.4.3(svelte@5.57.3(@typescript-eslint/types@8.72.1))':
+  '@human-kit/ui@1.5.3(svelte@5.57.3(@typescript-eslint/types@8.72.1))':
     dependencies:
       '@floating-ui/dom': 1.8.0
       svelte: 5.57.3(@typescript-eslint/types@8.72.1)

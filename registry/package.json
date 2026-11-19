@@ -6,7 +6,7 @@
 	"dependencies": {
 		"@fontsource-variable/geist": "^5.3.0",
 		"@fontsource-variable/geist-mono": "^5.3.0",
-		"@human-kit/ui": "^1.4.3",
+		"@human-kit/ui": "^1.5.3",
 		"@lucide/svelte": "^0.574.0",
 		"clsx": "^2.1.1",
 		"tailwind-merge": "^3.3.1",
