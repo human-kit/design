@@ -61,6 +61,11 @@
 			"title": "Collapsible",
 			"description": "A button that shows and hides what follows it, the panel opening on its own height."
 		},
+		"color-picker": {
+			"type": "registry:ui",
+			"title": "Color Picker",
+			"description": "One colour, picked on a square and a hue strip, typed as hex, or taken from a swatch or the screen."
+		},
 		"combobox": {
 			"type": "registry:ui",
 			"title": "Combobox",
