@@ -156,6 +156,11 @@
 			"title": "Overflow Row",
 			"description": "Items on one line, as many as fit, the rest counted in a chip that names them."
 		},
+		"page-header": {
+			"type": "registry:ui",
+			"title": "Page Header",
+			"description": "The head of a screen: breadcrumbs, its title and a line on it, and its actions on the right."
+		},
 		"pagination": {
 			"type": "registry:ui",
 			"title": "Pagination",
