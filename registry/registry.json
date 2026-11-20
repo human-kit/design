@@ -146,6 +146,11 @@
 			"title": "Menu",
 			"description": "A list of actions that opens from a button or a right click."
 		},
+		"nav-list": {
+			"type": "registry:ui",
+			"title": "Nav List",
+			"description": "The links of a sidebar, in groups, each with its icon and a count, the current page marked."
+		},
 		"number-field": {
 			"type": "registry:ui",
 			"title": "Number Field",
