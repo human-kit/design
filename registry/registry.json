@@ -96,6 +96,11 @@
 			"title": "Date Range Picker",
 			"description": "Two dates, a start and an end, typed part by part or picked from two months."
 		},
+		"description-list": {
+			"type": "registry:ui",
+			"title": "Description List",
+			"description": "Facts about one thing, each a term and its value, side by side or one over the other."
+		},
 		"dialog": {
 			"type": "registry:ui",
 			"title": "Dialog",
