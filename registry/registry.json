@@ -51,6 +51,11 @@
 			"title": "Calendar",
 			"description": "A month to pick a day or a stretch of days from."
 		},
+		"card": {
+			"type": "registry:ui",
+			"title": "Card",
+			"description": "A box for one subject: a header with its title and action, the content, and a footer."
+		},
 		"checkbox": {
 			"type": "registry:ui",
 			"title": "Checkbox",
