@@ -211,6 +211,11 @@
 			"title": "Spinner",
 			"description": "Something is loading: a turning circle, alone or with what it waits for in words."
 		},
+		"stat": {
+			"type": "registry:ui",
+			"title": "Stat",
+			"description": "One number that matters, with what it counts and how it moved."
+		},
 		"stepper": {
 			"type": "registry:ui",
 			"title": "Stepper",
