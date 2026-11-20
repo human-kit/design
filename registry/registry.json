@@ -206,6 +206,11 @@
 			"title": "Slider",
 			"description": "A number, or a range of two, picked by moving a thumb along a track."
 		},
+		"spinner": {
+			"type": "registry:ui",
+			"title": "Spinner",
+			"description": "Something is loading: a turning circle, alone or with what it waits for in words."
+		},
 		"stepper": {
 			"type": "registry:ui",
 			"title": "Stepper",
