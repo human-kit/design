@@ -41,7 +41,9 @@ const PAIRS: Pair[] = [
 	{ fg: 'ink-subtle', bg: 'canvas', min: NON_TEXT },
 	...TONES.flatMap((tone) => [
 		{ fg: `tone-${tone}-ink`, bg: `tone-${tone}-soft`, min: TEXT },
-		{ fg: `tone-${tone}-ink`, bg: 'canvas', min: TEXT }
+		{ fg: `tone-${tone}-ink`, bg: 'canvas', min: TEXT },
+		// An avatar's initials, on the darkest end of its fill.
+		{ fg: `tone-${tone}-fill-ink`, bg: `tone-${tone}-fill`, min: TEXT }
 	])
 ];
 

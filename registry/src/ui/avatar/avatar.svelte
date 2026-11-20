@@ -4,16 +4,16 @@
 
 	/** Each tone's fill, written out whole so Tailwind finds each class. */
 	const FILLS: Record<BadgeTone, string> = {
-		gray: '[--avatar-fill:var(--tone-gray-fill)]',
-		blue: '[--avatar-fill:var(--tone-blue-fill)]',
-		cyan: '[--avatar-fill:var(--tone-cyan-fill)]',
-		teal: '[--avatar-fill:var(--tone-teal-fill)]',
-		green: '[--avatar-fill:var(--tone-green-fill)]',
-		amber: '[--avatar-fill:var(--tone-amber-fill)]',
-		orange: '[--avatar-fill:var(--tone-orange-fill)]',
-		red: '[--avatar-fill:var(--tone-red-fill)]',
-		pink: '[--avatar-fill:var(--tone-pink-fill)]',
-		violet: '[--avatar-fill:var(--tone-violet-fill)]'
+		gray: '[--avatar-fill:var(--tone-gray-fill)] [--avatar-ink:var(--tone-gray-fill-ink)]',
+		blue: '[--avatar-fill:var(--tone-blue-fill)] [--avatar-ink:var(--tone-blue-fill-ink)]',
+		cyan: '[--avatar-fill:var(--tone-cyan-fill)] [--avatar-ink:var(--tone-cyan-fill-ink)]',
+		teal: '[--avatar-fill:var(--tone-teal-fill)] [--avatar-ink:var(--tone-teal-fill-ink)]',
+		green: '[--avatar-fill:var(--tone-green-fill)] [--avatar-ink:var(--tone-green-fill-ink)]',
+		amber: '[--avatar-fill:var(--tone-amber-fill)] [--avatar-ink:var(--tone-amber-fill-ink)]',
+		orange: '[--avatar-fill:var(--tone-orange-fill)] [--avatar-ink:var(--tone-orange-fill-ink)]',
+		red: '[--avatar-fill:var(--tone-red-fill)] [--avatar-ink:var(--tone-red-fill-ink)]',
+		pink: '[--avatar-fill:var(--tone-pink-fill)] [--avatar-ink:var(--tone-pink-fill-ink)]',
+		violet: '[--avatar-fill:var(--tone-violet-fill)] [--avatar-ink:var(--tone-violet-fill-ink)]'
 	};
 
 	/** The fill, a step lighter at the top, so the tile reads as lit from above. */
@@ -21,7 +21,7 @@
 		'bg-linear-to-b from-[color-mix(in_oklch,var(--avatar-fill)_80%,white)] to-(--avatar-fill)';
 
 	/**
-	 * A tile of colour with white initials, its corners at 30% of its side: rounder than a
+	 * A tile of colour with dark initials in its own hue, its corners at 30% of its side: rounder than a
 	 * button, short of a circle. A light along its top and a hairline round it, drawn over a
 	 * photo too, so a pale picture still keeps its edge. The initials sit on the same scale as
 	 * the rest of the kit: 20px beside a row's text, 24px beside a button, 32px at the head of a
@@ -35,7 +35,8 @@
 				'after:shadow-[inset_0_1px_0_oklch(1_0_0/0.2),inset_0_0_0_1px_oklch(0_0_0/0.1)]'
 			],
 			image: 'size-full object-cover',
-			fallback: 'grid size-full place-items-center leading-none font-semibold text-on-primary'
+			fallback:
+				'grid size-full place-items-center leading-none font-semibold text-(--avatar-ink,var(--ink))'
 		},
 		variants: {
 			size: {
@@ -52,8 +53,7 @@
 	/**
 	 * The fill of a tone, for a mark drawn like an avatar.
 	 *
-	 * The white initials hold about 2.5–3:1 on it, under the 4.5:1 asked of text: a choice made
-	 * for the look, still to be worked out. The name is always read out whole, never the letters.
+	 * Its initials take the tone's fill ink, at 4.7:1 or more on the darkest end of the fill. The name is always read out whole, never the letters.
 	 */
 	export function avatarFillClass(tone: BadgeTone) {
 		return `${FILLS[tone]} ${GRADIENT}`;
