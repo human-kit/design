@@ -14,6 +14,11 @@ const config = {
 			'@registry': '../registry/src'
 		},
 		prerender: {
+			// A component's demos link to places that are not there, `#inbox` in a sidebar: they show
+			// a link, they do not lead anywhere. Anywhere else a missing anchor is a broken link.
+			handleMissingId: ({ path, message }) => {
+				if (!path.startsWith('/docs/components/')) throw new Error(message);
+			},
 			entries: [
 				'*',
 				'/docs/components/button',
