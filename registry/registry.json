@@ -201,6 +201,11 @@
 			"title": "Slider",
 			"description": "A number, or a range of two, picked by moving a thumb along a track."
 		},
+		"stepper": {
+			"type": "registry:ui",
+			"title": "Stepper",
+			"description": "The steps of a process and where it stands: done, current and ahead, in a row or a column."
+		},
 		"switch": {
 			"type": "registry:ui",
 			"title": "Switch",
