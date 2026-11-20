@@ -241,6 +241,11 @@
 			"title": "Time Picker",
 			"description": "A time typed part by part, or picked from wheels that open under it."
 		},
+		"timeline": {
+			"type": "registry:ui",
+			"title": "Timeline",
+			"description": "Things that happened, in order, each with its mark, a title, when, and what."
+		},
 		"toast": {
 			"type": "registry:ui",
 			"title": "Toast",
