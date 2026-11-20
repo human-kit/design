@@ -86,6 +86,11 @@
 			"title": "Combobox",
 			"description": "A field that filters a list as you type, and takes one of its rows."
 		},
+		"command-palette": {
+			"type": "registry:ui",
+			"title": "Command Palette",
+			"description": "Every page and action a search away, opened with Ctrl K."
+		},
 		"date-picker": {
 			"type": "registry:ui",
 			"title": "Date Picker",
@@ -135,6 +140,11 @@
 			"type": "registry:ui",
 			"title": "Kbd",
 			"description": "A key to press, written in a line of text, alone or as a combination."
+		},
+		"link": {
+			"type": "registry:ui",
+			"title": "Link",
+			"description": "A link in a line of text, underlined, and marked when it leaves the site."
 		},
 		"listbox": {
 			"type": "registry:ui",
@@ -196,6 +206,16 @@
 			"title": "Rating",
 			"description": "A score on a small scale, given with a press on a star or with the arrows."
 		},
+		"resizable": {
+			"type": "registry:ui",
+			"title": "Resizable",
+			"description": "Two panels and a line between them, dragged or moved with the keys to share the space."
+		},
+		"scroll-area": {
+			"type": "registry:ui",
+			"title": "Scroll Area",
+			"description": "A region that scrolls on its own, with a thin bar and edges that fade where there is more."
+		},
 		"search-field": {
 			"type": "registry:ui",
 			"title": "Search Field",
@@ -210,6 +230,11 @@
 			"type": "registry:ui",
 			"title": "Separator",
 			"description": "A line between two groups, or one that the pointer and the keys move to size a pane."
+		},
+		"sidebar": {
+			"type": "registry:ui",
+			"title": "Sidebar",
+			"description": "The app's column of navigation, with a head, the links and a foot, folding to a rail of icons."
 		},
 		"slider": {
 			"type": "registry:ui",
