@@ -1,6 +1,8 @@
 <script lang="ts">
 	import type { Component, Snippet } from 'svelte';
 	import type { HTMLAnchorAttributes } from 'svelte/elements';
+	import { getSidebarContext } from '@registry/ui/sidebar/context';
+	import { Tooltip } from '@registry/ui/tooltip';
 	import { navListVariants } from './nav-list-variants';
 
 	type Props = Omit<HTMLAnchorAttributes, 'class'> & {
@@ -26,17 +28,27 @@
 	}: Props = $props();
 
 	const styles = navListVariants();
+	const sidebar = getSidebarContext();
+	let link = $state<HTMLAnchorElement | null>(null);
+	let label = $state<HTMLSpanElement | null>(null);
+	// In a folded sidebar only the icon shows: the tooltip gives the name to the eye. A screen
+	// reader already has it from the link.
+	const folded = $derived(sidebar?.collapsed ?? false);
 </script>
 
 <li class="flex">
 	<a
+		bind:this={link}
 		{href}
 		aria-current={current ? 'page' : undefined}
 		class={styles.item({ class: className })}
 		{...restProps}
 	>
 		{#if Icon}<Icon aria-hidden="true" />{/if}
-		<span class={styles.label()}>{@render children?.()}</span>
+		<span bind:this={label} class={styles.label()}>{@render children?.()}</span>
 		{#if count !== undefined}<span class={styles.count()}>{count}</span>{/if}
 	</a>
+	{#if folded}
+		<Tooltip anchor={link} text={label?.textContent ?? ''} placement="right" />
+	{/if}
 </li>
