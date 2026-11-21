@@ -2,6 +2,7 @@
 	import '../app.css';
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
+	import Logo from '$lib/components/logo.svelte';
 	import ThemeToggle from '$lib/components/theme-toggle.svelte';
 	import { components } from '$lib/registry';
 
@@ -27,9 +28,10 @@
 	<div class="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
 		<a
 			href={resolve('/')}
-			class="outline-ring rounded-sm font-semibold tracking-tight focus-visible:outline-2 focus-visible:outline-offset-2"
+			class="outline-ring rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4"
 		>
-			human-kit design
+			<Logo class="h-4 w-auto" />
+			<span class="sr-only">human-kit design</span>
 		</a>
 		<div class="flex items-center gap-1">
 			<a
