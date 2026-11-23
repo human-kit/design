@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Heading from '$lib/shell/heading.svelte';
+	import DocToolbar from '$lib/shell/doc-toolbar.svelte';
 	import CodeBlock from '$lib/components/code-block.svelte';
 	import { CLI } from '$lib/registry';
 
@@ -24,19 +26,18 @@
 	<meta name="description" content="Set up human-kit design in a SvelteKit project." />
 </svelte:head>
 
-<article class="flex max-w-3xl flex-col gap-8">
-	<header class="flex flex-col gap-2">
-		<h1 class="text-3xl font-semibold tracking-tight">Installation</h1>
-		<p class="text-ink-muted">
-			Set up the kit in a SvelteKit project. The project must use Svelte 5 and Tailwind CSS v4.
-		</p>
+<article class="doc-prose relative">
+	<DocToolbar />
+	<header>
+		<h1>Installation</h1>
+		<p>Set up the kit in a SvelteKit project. The project must use Svelte 5 and Tailwind CSS v4.</p>
 	</header>
 
-	<section class="flex flex-col gap-3">
-		<h2 class="text-xl font-semibold tracking-tight">1. Run init</h2>
+	<section>
+		<Heading id="run-init" text="1. Run init" />
 		<CodeBlock code={`${CLI} init`} label="Init command" />
-		<p class="text-ink-muted text-sm">The command does these steps:</p>
-		<ul class="text-ink-muted list-disc pl-5 text-sm">
+		<p>The command does these steps:</p>
+		<ul>
 			<li>It writes <code>human-kit.json</code> at the root of the project.</li>
 			<li>It writes the <code>cn()</code> helper to <code>src/lib/utils.ts</code>.</li>
 			<li>
@@ -48,23 +49,23 @@
 		</ul>
 	</section>
 
-	<section class="flex flex-col gap-3">
-		<h2 class="text-xl font-semibold tracking-tight">2. Add components</h2>
+	<section>
+		<Heading id="add-components" text="2. Add components" />
 		<CodeBlock code={`${CLI} add button dialog select`} label="Add command" />
-		<p class="text-ink-muted text-sm">
+		<p>
 			The command copies the files of each component and of the components that it needs. It does
 			not replace a file that you changed. Use <code>--overwrite</code> to replace it.
 		</p>
 	</section>
 
-	<section class="flex flex-col gap-3">
-		<h2 class="text-xl font-semibold tracking-tight">3. Use them</h2>
+	<section>
+		<Heading id="use-them" text="3. Use them" />
 		<CodeBlock code={usage} label="Usage" />
 	</section>
 
-	<section class="flex flex-col gap-3">
-		<h2 class="text-xl font-semibold tracking-tight">Configuration</h2>
-		<p class="text-ink-muted text-sm">
+	<section>
+		<Heading id="configuration" text="Configuration" />
+		<p>
 			<code>human-kit.json</code> tells the CLI where to put the files. The two aliases must start
 			with <code>$lib</code>. The CLI writes the import paths of the copied files with these
 			aliases.

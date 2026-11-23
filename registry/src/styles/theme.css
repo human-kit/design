@@ -49,7 +49,8 @@
 	--surface-hover: oklch(0.985 0 0);
 	--surface-pressed: oklch(0.985 0 0);
 	--overlay: oklch(0.985 0 0);
-	/* The chip of segmented tabs, lifted off its sunken rail. */
+	/* The rail of a segmented control, a shade under what it sits on, and its lifted chip. */
+	--segment-rail: oklch(0 0 0 / 0.05);
 	--segment-chip: oklch(0.995 0 0);
 	--hover: oklch(0.955 0 0);
 
@@ -169,6 +170,8 @@
 	--surface-hover: oklch(0.235 0 0);
 	--surface-pressed: oklch(0.18 0 0);
 	--overlay: oklch(0.23 0 0);
+	/* Sunk under the ground, as in light: a white tint would lift it to the chip's level. */
+	--segment-rail: oklch(0 0 0 / 0.25);
 	--segment-chip: oklch(0.3 0 0);
 	--hover: oklch(0.25 0 0);
 
@@ -331,6 +334,7 @@
 	--color-surface-hover: var(--surface-hover);
 	--color-surface-pressed: var(--surface-pressed);
 	--color-overlay: var(--overlay);
+	--color-segment-rail: var(--segment-rail);
 	--color-segment-chip: var(--segment-chip);
 	--color-hover: var(--hover);
 	--color-selected: var(--selected);
@@ -467,8 +471,9 @@
 	--shadow-primary-pressed:
 		0 0 0 1px var(--primary-edge), inset 0 1px 0 transparent, 0 2px 6px -1px transparent;
 	--shadow-chip: 0 1px 2px var(--fall);
-	/* The rail of segmented tabs: sunk, with only an edge, as a switch's rail off. */
-	--shadow-segment-rail: inset 0 0 0 1px var(--edge);
+	/* The chip of a segmented control: a control's edge and fall, without the light along the
+	   top. On a chip this short, in the dark, that line reads as a sheen over the edge. */
+	--shadow-segment-chip: 0 0 0 1px var(--edge), 0 1px 2px var(--fall), 0 2px 5px -2px var(--fall);
 	/* A switch: its rail off only has an edge, so a translucent grey on grey still shows. */
 	--shadow-switch-rail: inset 0 0 0 1px var(--edge);
 	/* Its rail on: a light along the top and a darker edge of its own colour. */

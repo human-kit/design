@@ -14,7 +14,11 @@
 	const classes = $derived(
 		cn(
 			toggleVariants({ variant: 'ghost', size: look.size }),
-			toggleGroupVariants({ variant: look.variant, orientation: look.orientation }).item(),
+			toggleGroupVariants({
+				variant: look.variant,
+				orientation: look.orientation,
+				size: look.size
+			}).item(),
 			className
 		)
 	);
