@@ -1,4 +1,5 @@
 import { getContext, setContext } from 'svelte';
+import { segment } from '@registry/lib/segment';
 import { tv, type VariantProps } from '@registry/lib/utils';
 
 /**
@@ -32,7 +33,7 @@ export const tabsVariants = tv({
 		indicator: [
 			'pointer-events-none absolute z-0 data-hidden:opacity-0',
 			'left-(--active-tab-left) w-(--active-tab-width)',
-			'transition-[left,width,opacity] duration-200 ease-out motion-reduce:transition-none'
+			segment.slide
 		],
 		panel: 'outline-hidden focus-visible:shadow-focus'
 	},
@@ -55,22 +56,13 @@ export const tabsVariants = tv({
 				panel: 'rounded-control pt-4'
 			},
 			segment: {
-				// A rail one tab tall, with 2px around: the chip's corner is the rail's less those 2px.
-				// 26px high in all, with a button's text, so it sits in a toolbar beside one.
-				list: [
-					'w-fit gap-0.5 rounded-control bg-ink/5 p-0.5 shadow-segment-rail',
-					'data-indicator-ready:*:data-tabs-tab:bg-transparent'
-				],
-				// Before the indicator, the picked tab only fills: a shadow of its own would have to be
-				// taken away after, and with it the focus halo.
-				tab: [
-					'h-5.5 rounded-[calc(var(--radius-control)-2px)] px-2 text-small [&_svg]:size-3.5',
-					'data-selected:bg-segment-chip'
-				],
-				indicator: [
-					'top-(--active-tab-top) h-(--active-tab-height) rounded-[calc(var(--radius-control)-2px)]',
-					'bg-segment-chip shadow-control'
-				],
+				// The rail and the chip of lib/segment, as the segmented toggle group draws them. 26px
+				// high in all, with a button's text, so it sits in a toolbar beside one.
+				list: ['w-fit', segment.rail, segment.handedOver],
+				// Before the indicator, the picked tab is the chip, lift and all, as the indicator will
+				// draw it: the server's paint does not change once the indicator takes over.
+				tab: ['h-5.5 px-2 text-small [&_svg]:size-3.5', segment.chip, segment.picked],
+				indicator: ['top-(--active-tab-top) h-(--active-tab-height)', segment.chip, segment.lifted],
 				panel: 'rounded-control pt-3'
 			}
 		}

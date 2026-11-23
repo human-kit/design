@@ -3,7 +3,7 @@
  *
  * The files of an item and its dependencies are not written by hand. The script finds them:
  *   - `registry:ui` items are the folders in `src/ui`, with every file in the folder.
- *   - an import of `@registry/lib/utils` or `@registry/ui/<name>` is a registry dependency.
+ *   - an import of `@registry/lib/<name>` or `@registry/ui/<name>` is a registry dependency.
  *   - any other bare import (except `svelte`) is an npm dependency. Its version range comes
  *     from `registry/package.json`, thus the CLI installs the version the docs are built with.
  */
@@ -35,6 +35,7 @@ const outDir = join(registryDir, '..', 'docs', 'static', 'r');
 
 const FIXED_FILES: Record<string, string[]> = {
 	utils: ['lib/utils.ts'],
+	segment: ['lib/segment.ts'],
 	theme: ['styles/theme.css']
 };
 
@@ -68,8 +69,12 @@ async function buildItem(
 
 		for (const [, specifier] of content.matchAll(IMPORT_PATTERN)) {
 			if (specifier.startsWith('.')) continue;
-			if (specifier === '@registry/lib/utils') {
-				registryDependencies.add('utils');
+			if (specifier.startsWith('@registry/lib/')) {
+				const dependency = specifier.slice('@registry/lib/'.length);
+				if (!FIXED_FILES[dependency]?.includes(`lib/${dependency}.ts`)) {
+					throw new Error(`${path} imports the unknown lib "${dependency}".`);
+				}
+				registryDependencies.add(dependency);
 				continue;
 			}
 			if (specifier.startsWith('@registry/ui/')) {
@@ -81,7 +86,7 @@ async function buildItem(
 				continue;
 			}
 			if (specifier.startsWith('@registry/')) {
-				throw new Error(`${path} imports "${specifier}". Only lib/utils and ui/* are allowed.`);
+				throw new Error(`${path} imports "${specifier}". Only lib/* and ui/* are allowed.`);
 			}
 			const pkg = packageName(specifier);
 			if (pkg === 'svelte') continue;

@@ -3,3 +3,252 @@
 
 /* The registry components live outside this package. Tailwind scans them for class names. */
 @source '../../registry/src';
+
+/*
+ * The ground of the docs frame: the header and the rails sit on it, the reading pane is the card
+ * on top. A step under the canvas in light; in dark, where each level up is lighter, a step
+ * under it too, so the pane still reads as the raised one.
+ */
+:root {
+	--chrome: oklch(0.965 0 0);
+	--rail-fade: var(--chrome);
+	/* The edge of a block on the page (a preview, a code block). The strong line in light; in dark
+	   the strong one cut a bright frame round each block, thus the plain line. */
+	--frame: var(--line-strong);
+}
+
+.dark {
+	--chrome: oklch(0.14 0 0);
+	--frame: var(--line);
+}
+
+@theme inline {
+	/* The face of the large titles of the brand: one weight, upright and italic, never small. */
+	--font-display: 'DM Serif Display', Georgia, serif;
+	--color-chrome: var(--chrome);
+	--color-frame: var(--frame);
+}
+
+/*
+ * The rails: a thin thumb on a clear track, shown only while the pointer is over the rail. The
+ * track is always reserved (`overflow-y: scroll`), so showing the thumb moves nothing.
+ */
+.rail-scrollbar {
+	overflow-y: scroll;
+	scrollbar-width: thin;
+	scrollbar-color: transparent transparent;
+}
+
+.rail-scrollbar:hover {
+	scrollbar-color: var(--line-strong) transparent;
+}
+
+/* The reading pane: the same thin thumb, always in sight, as it is the page's own scroll. */
+.pane-scrollbar {
+	scrollbar-width: thin;
+	scrollbar-color: var(--line-strong) transparent;
+}
+
+/*
+ * The edges of a rail fade into the chrome while there is more to scroll that way. The scroll
+ * itself drives them, in CSS: the prerendered page already fades the right edge, where a script
+ * could only do it after the first paint. A rail with nothing to scroll has no timeline, and
+ * both stay at 0. Without scroll-driven animations (Firefox) `scrollFade` sets the two values.
+ */
+@property --fade-top {
+	syntax: '<number>';
+	inherits: true;
+	initial-value: 0;
+}
+
+@property --fade-bottom {
+	syntax: '<number>';
+	inherits: true;
+	initial-value: 0;
+}
+
+.scroll-fade {
+	--fade-size: 1.75rem;
+}
+
+@supports (animation-timeline: scroll()) {
+	.scroll-fade {
+		animation:
+			scroll-fade-top linear both,
+			scroll-fade-bottom linear both;
+		animation-timeline: scroll(self), scroll(self);
+		/* Each edge fades over the first or the last 16px of the scroll. */
+		animation-range:
+			0 16px,
+			calc(100% - 16px) 100%;
+	}
+}
+
+@keyframes scroll-fade-top {
+	from {
+		--fade-top: 0;
+	}
+	to {
+		--fade-top: 1;
+	}
+}
+
+@keyframes scroll-fade-bottom {
+	from {
+		--fade-bottom: 1;
+	}
+	to {
+		--fade-bottom: 0;
+	}
+}
+
+.scroll-fade-edge {
+	position: sticky;
+	z-index: 1;
+	height: var(--fade-size);
+	pointer-events: none;
+}
+
+.scroll-fade-edge-top {
+	top: 0;
+	margin-bottom: calc(-1 * var(--fade-size));
+	background: linear-gradient(to bottom, var(--rail-fade), transparent);
+	opacity: var(--fade-top);
+}
+
+.scroll-fade-edge-bottom {
+	bottom: 0;
+	margin-top: calc(-1 * var(--fade-size));
+	background: linear-gradient(to top, var(--rail-fade), transparent);
+	opacity: var(--fade-bottom);
+}
+
+/* A heading linked from "On this page" stops a little under the top of the pane. */
+main :is(h2, h3)[id] {
+	scroll-margin-top: 1.5rem;
+}
+
+/*
+ * The reading pane's type, the same as the @human-kit/ui docs: serif titles, a 15px body at a
+ * 1.7 leading, and every block spaced from the one before it. Pages write plain elements inside
+ * `.doc-prose`; the spacing comes from here, not from classes on each.
+ */
+:root {
+	--prose-ink: oklch(0.37 0 0);
+	--prose-code: oklch(0.955 0 0);
+	--font-serif: 'Roboto Serif Variable', serif;
+}
+
+.dark {
+	--prose-ink: oklch(0.87 0 0);
+	--prose-code: oklch(0.25 0 0);
+}
+
+@layer components {
+	.doc-prose {
+		font-size: 0.9375rem;
+		line-height: 1.7;
+		color: var(--prose-ink);
+	}
+
+	.doc-prose :is(header, section) {
+		display: contents;
+	}
+
+	.doc-prose p,
+	.doc-prose .doc-block {
+		margin-top: 1rem;
+	}
+
+	.doc-prose :is(strong, b) {
+		font-weight: 600;
+	}
+
+	.doc-prose :is(h1, h2, h3),
+	:is(.doc-title-1, .doc-title-2) {
+		font-family: var(--font-serif);
+		font-weight: 500;
+		color: var(--ink);
+	}
+
+	.doc-prose h1,
+	.doc-title-1 {
+		font-size: 1.875rem;
+		letter-spacing: -0.03em;
+	}
+
+	.doc-prose h2,
+	.doc-title-2 {
+		font-size: 1.25rem;
+		letter-spacing: -0.02em;
+	}
+
+	.doc-prose h2 {
+		margin-top: 2.5rem;
+		margin-bottom: 0.375rem;
+	}
+
+	.doc-prose h3 {
+		margin-top: 1rem;
+		margin-bottom: 0.375rem;
+		font-size: 1.0625rem;
+		letter-spacing: -0.015em;
+	}
+
+	/* The line under a title sits tight against it. */
+	.doc-prose :is(h1, h2, h3) + p {
+		margin-top: 0;
+	}
+
+	.doc-prose ul {
+		margin-top: 1rem;
+		padding-left: 1.5rem;
+		list-style-type: circle;
+	}
+
+	.doc-prose li {
+		margin-top: 0.375rem;
+	}
+
+	.doc-prose a:not(.doc-plain) {
+		color: var(--ink);
+		text-decoration: underline;
+		text-underline-offset: 2px;
+	}
+
+	.doc-prose :not(pre) > code {
+		border-radius: 0.375rem;
+		background-color: var(--prose-code);
+		padding: 0.125rem 0.375rem;
+		font-family: var(--font-mono);
+		font-size: 0.875em;
+	}
+
+	.doc-prose table {
+		width: 100%;
+		border-collapse: collapse;
+		font-size: 0.875rem;
+	}
+
+	.doc-prose th {
+		border-bottom: 1px solid var(--line-strong);
+		padding: 0.5rem 0.75rem;
+		text-align: left;
+		font-weight: 600;
+		color: var(--ink);
+	}
+
+	.doc-prose td {
+		border-bottom: 1px solid var(--line);
+		padding: 0.5rem 0.75rem;
+	}
+}
+
+/* The highlighter writes both themes into each token; the current theme picks its colour. */
+.shiki-code span {
+	color: var(--shiki-light);
+}
+
+.dark .shiki-code span {
+	color: var(--shiki-dark);
+}

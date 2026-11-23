@@ -2,6 +2,7 @@
 	import { Button } from '@registry/ui/button';
 	import Check from '@lucide/svelte/icons/check';
 	import Copy from '@lucide/svelte/icons/copy';
+	import { swapIn } from '$lib/motion';
 
 	let { text, class: className }: { text: string; class?: string } = $props();
 
@@ -17,11 +18,12 @@
 </script>
 
 <Button variant="ghost" size="icon-sm" class={className} onclick={copy} aria-label="Copy">
-	{#if copied}
-		<Check />
-	{:else}
-		<Copy />
-	{/if}
+	<!-- The check grows in where the copy icon was, and back. -->
+	{#key copied}
+		<span class="flex" in:swapIn>
+			{#if copied}<Check />{:else}<Copy />{/if}
+		</span>
+	{/key}
 </Button>
 <!-- The visual change of the icon has no text, thus a status message tells a screen reader. -->
 <span class="sr-only" role="status">{copied ? 'Copied' : ''}</span>

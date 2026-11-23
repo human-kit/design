@@ -51,7 +51,6 @@
 			size: {
 				default: 'h-6.5 px-2 text-small',
 				sm: 'h-6 px-1.5 text-small [&_svg]:size-3.5',
-				xs: 'h-5.5 gap-1 px-1.5 text-small [&_svg]:size-3.5',
 				icon: 'size-6.5',
 				'icon-sm': 'size-6 [&_svg]:size-3.5',
 				'icon-xs': 'size-5.5 [&_svg]:size-3.5',
@@ -85,10 +84,10 @@
 			},
 			// The icon's box carries a margin around its glyph. With the same padding on both sides,
 			// a label led by an icon stands further from its left edge than from its right one.
-			{ iconed: true, size: ['sm', 'xs'], class: 'pl-1' },
+			{ iconed: true, size: 'sm', class: 'pl-1' },
 			{ iconed: true, size: 'default', class: 'pl-1.5' },
 			// The count ends the button as far from its edge as the icon's ink starts it.
-			{ counted: true, size: ['sm', 'xs'], class: 'pr-1.25' },
+			{ counted: true, size: 'sm', class: 'pr-1.25' },
 			// On an 18px box the lift of the hover reads as the border swelling. It keeps its rest.
 			{
 				variant: 'outline',

@@ -5,7 +5,6 @@
 
 <div class="flex flex-col items-center gap-4">
 	<div class="flex flex-wrap items-center gap-3">
-		<Button size="xs">Extra small</Button>
 		<Button size="sm">Small</Button>
 		<Button>Default</Button>
 	</div>

@@ -6,6 +6,11 @@
 			"title": "Utils",
 			"description": "The cn() helper that merges Tailwind class names."
 		},
+		"segment": {
+			"type": "registry:lib",
+			"title": "Segment",
+			"description": "The segmented look: a sunken rail with the picked option on a chip. Shared by Tabs and Toggle Group."
+		},
 		"theme": {
 			"type": "registry:style",
 			"title": "Theme",

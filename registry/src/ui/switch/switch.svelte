@@ -27,6 +27,14 @@
 		// Read-only keeps its focus, but the thumb no longer reaches for the other side.
 		variants: {
 			size: {
+				// 16px, for a dense panel of settings where each row is a line of small text.
+				sm: {
+					root: 'h-4 w-7',
+					thumb: [
+						'size-3 data-checked:translate-x-3',
+						'data-pressed:not-data-readonly:w-4 data-checked:data-pressed:not-data-readonly:translate-x-2'
+					]
+				},
 				// Its rail stands 20px: on the line of a label, it is no taller than the text.
 				default: {
 					root: 'h-5 w-9',
