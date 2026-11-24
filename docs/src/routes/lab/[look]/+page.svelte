@@ -10,6 +10,10 @@
 	setContext(LOOK_KEY, data.look);
 </script>
 
+<svelte:head>
+	<meta name="robots" content="noindex" />
+</svelte:head>
+
 <!-- The real page of a component, with its playground in the look under review. -->
 <DocsShell>
 	<ComponentPage data={{ entry: data.entry, demos: data.demos }} />

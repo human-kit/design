@@ -67,6 +67,20 @@
 		['Hours', 'Open in light and in dark'],
 		['To take home', 'Any of them, as source']
 	];
+
+	// What a search engine reads about the site: the registry, where its code lives, its family.
+	const LD = {
+		'@context': 'https://schema.org',
+		'@type': 'SoftwareSourceCode',
+		name: 'human-kit design',
+		alternateName: ['humankit design', '@human-kit/design'],
+		description: 'Styled, accessible Svelte 5 components that you copy into your project and own.',
+		url: 'https://design.human-kit.com/',
+		codeRepository: 'https://github.com/human-kit/design',
+		programmingLanguage: ['Svelte', 'TypeScript'],
+		license: 'https://opensource.org/licenses/MIT',
+		isPartOf: { '@type': 'WebSite', name: 'human-kit', url: 'https://human-kit.com/' }
+	};
 </script>
 
 <svelte:head>
@@ -75,6 +89,8 @@
 		name="description"
 		content="Styled, accessible Svelte 5 components that you copy into your project and own."
 	/>
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -- a fixed object, nothing from a reader -->
+	{@html `<script type="application/ld+json">${JSON.stringify(LD)}</` + 'script>'}
 </svelte:head>
 
 <!-- eslint-disable svelte/no-navigation-without-resolve -->
